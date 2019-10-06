@@ -21,6 +21,7 @@ public class Produto {
         this.quantidade = quantidade;
         this.valor = valor;
     }
+    
     Produto(){
         this.nome = new String();
         this.id = null;

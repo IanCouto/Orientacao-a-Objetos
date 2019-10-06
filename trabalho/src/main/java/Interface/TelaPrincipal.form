@@ -106,6 +106,9 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JDesktopPane" name="jDesktopPane1">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="this.setExtendedState(MAXIMIZED_BOTH);"/>
+      </AuxValues>
 
       <Layout>
         <DimensionLayout dim="0">
