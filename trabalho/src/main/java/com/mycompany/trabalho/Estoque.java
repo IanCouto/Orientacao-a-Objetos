@@ -35,9 +35,9 @@ public class Estoque {
             }
         }
     }
-    void removeProdutoId(Integer id){
+    void removeProdutoQuantidade(Integer quantidade){
         for(int i = 0; i < produtos.size(); i++ ){
-            if(produtos.get(i).getId() == id){
+            if(produtos.get(i).getQuantidade() == quantidade){
                 lixo.add(produtos.get(i));
                 produtos.remove(i);
             }
