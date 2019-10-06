@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.trabalho;
+package Interface;
 
 /**
  *
@@ -30,6 +30,10 @@ public class TelaEstoque extends javax.swing.JInternalFrame {
         jToggleButton1 = new javax.swing.JToggleButton();
         jRadioButton1 = new javax.swing.JRadioButton();
 
+        setClosable(true);
+        setForeground(java.awt.Color.lightGray);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("Estoque");
 
         jToggleButton1.setText("Bunitu");
