@@ -31,15 +31,31 @@ public class Produto {
         return id;
     }
     
+    void setId(int newId){
+        this.id = newId;
+    }
+    
     String getNome(){
         return nome;
+    }
+    
+    void setNome(String newNome){
+        this.nome = newNome;
     }
     
     Integer getQuantidade(){
         return quantidade;
     }
     
+    void setQuantidade(int qtd){
+        this.quantidade = qtd;
+    }
+    
     Float getValor(){
         return valor;
+    }
+    
+    void setValor(float val){
+        this.valor = val;
     }
 }
