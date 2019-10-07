@@ -2,20 +2,10 @@
  Álvaro Domingues de Freitas     Matrícula: 201876007
  Arthur Rodrigues Fernandes      Matrícula: 201835005
  Augusto Castilho Medeiros       Matrícula: 201876044
- Ian Couto de Paula		Matrícula: 201876002
- Matheus Henrique Rubio		Matrícula: 201576036
- */
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ Ian Couto de Paula		 Matrícula: 201876002
+ Matheus Henrique Rubio		 Matrícula: 201876036
  */
 package com.mycompany.trabalho;
-
-/**
- *
- * @author icout
- */
 public class Produto {
 
     private String nome;

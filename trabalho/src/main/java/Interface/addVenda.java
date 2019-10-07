@@ -3,24 +3,10 @@
 Arthur Rodrigues Fernandes      Matrícula: 201835005
 Augusto Castilho Medeiros       Matrícula: 201876044
 Ian Couto de Paula		Matrícula: 201876002
-Matheus Henrique Rubio		Matrícula: 201576036
+Matheus Henrique Rubio		Matrícula: 201876036
 */
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Interface;
-
-/**
- *
- * @author Augusto
- */
 public class addVenda extends javax.swing.JInternalFrame {
-
-    /**
-     * Creates new form addVenda
-     */
     public addVenda() {
         initComponents();
     }
