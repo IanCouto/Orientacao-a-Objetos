@@ -5,7 +5,7 @@
  Ian Couto de Paula		 Matrícula: 201876002
  Matheus Henrique Rubio		 Matrícula: 201876036
  */
-package com.mycompany.trabalho;
+package com.mycompany.aplicacao;
 public class Produto {
 
     private String nome;

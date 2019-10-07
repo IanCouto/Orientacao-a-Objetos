@@ -5,7 +5,7 @@ Augusto Castilho Medeiros       Matrícula: 201876044
 Ian Couto de Paula		Matrícula: 201876002
 Matheus Henrique Rubio		Matrícula: 201876036
 */
-package com.mycompany.trabalho;
+package com.mycompany.aplicacao;
 import java.util.ArrayList;
 public class Estoque {
     private ArrayList<Produto> produtos;

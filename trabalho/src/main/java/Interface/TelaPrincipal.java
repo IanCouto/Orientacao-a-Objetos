@@ -171,7 +171,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        addVenda adicionaVenda = new addVenda();
+        AddVenda adicionaVenda = new AddVenda();
         jDesktopPane1.add(adicionaVenda);
         adicionaVenda.setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
@@ -184,7 +184,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     //Eventos que chamam as telas secundárias
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        addProduto adicionaProd = new addProduto();
+        AddProduto adicionaProd = new AddProduto();
         jDesktopPane1.add(adicionaProd);
         adicionaProd.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -196,7 +196,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        addVenda adicionaVenda = new addVenda();
+        AddVenda adicionaVenda = new AddVenda();
         jDesktopPane1.add(adicionaVenda);
         adicionaVenda.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
