@@ -6,8 +6,8 @@ Ian Couto de Paula		Matrícula: 201876002
 Matheus Henrique Rubio		Matrícula: 201876036
 */
 package Interface;
-public class TelaEstoque extends javax.swing.JInternalFrame {
-    public TelaEstoque() {
+public class Estoque extends javax.swing.JInternalFrame {
+    public Estoque() {
         initComponents();
     }
 

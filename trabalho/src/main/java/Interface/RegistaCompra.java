@@ -6,8 +6,8 @@ Ian Couto de Paula		Matrícula: 201876002
 Matheus Henrique Rubio		Matrícula: 201876036
 */
 package Interface;
-public class AddVenda extends javax.swing.JInternalFrame {
-    public AddVenda() {
+public class RegistaCompra extends javax.swing.JInternalFrame {
+    public RegistaCompra() {
         initComponents();
     }
 
@@ -34,7 +34,7 @@ public class AddVenda extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Nova venda");
+        setTitle("Regista Compra");
 
         jLabel1.setText("Nome:");
 
@@ -76,7 +76,7 @@ public class AddVenda extends javax.swing.JInternalFrame {
                                 .addGap(201, 201, 201))
                             .addComponent(jTextField1)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, Short.MAX_VALUE)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                 .addGap(230, 230, 230))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)

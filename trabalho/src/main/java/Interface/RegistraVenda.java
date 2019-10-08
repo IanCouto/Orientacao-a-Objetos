@@ -6,11 +6,11 @@ Ian Couto de Paula		Matrícula: 201876002
 Matheus Henrique Rubio		Matrícula: 201876036
 */
 package Interface;
-public class RegistroVendas extends javax.swing.JInternalFrame {
+public class RegistraVenda extends javax.swing.JInternalFrame {
     /**
      * Creates new form RegistroVendas
      */
-    public RegistroVendas() {
+    public RegistraVenda() {
         initComponents();
     }
 
