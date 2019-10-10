@@ -196,10 +196,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_compraActionPerformed
 
     private void limparEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limparEstoqueActionPerformed
-        // TODO add your handling code here:
-        LimpaEstoque a = new LimpaEstoque();
-        jDesktopPane1.add(a);
-        a.setVisible(true);
+        int limpar;
+        limpar = JOptionPane.showConfirmDialog(null, "Deseja limpar todo o estoque?", "Limpar", JOptionPane.OK_CANCEL_OPTION);
+        //Ok = 0, Cancel = 2
+        if(limpar == 0){
+            //limpa o estoque;
+        }
     }//GEN-LAST:event_limparEstoqueActionPerformed
 
     private void EstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EstoqueActionPerformed
