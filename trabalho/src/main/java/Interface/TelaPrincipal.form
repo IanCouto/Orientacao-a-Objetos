@@ -79,32 +79,29 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
                   <Component id="Estoque" pref="120" max="32767" attributes="0"/>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="Venda" pref="120" max="32767" attributes="0"/>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="compra" pref="120" max="32767" attributes="0"/>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="editarProduto" pref="120" max="32767" attributes="0"/>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="limparEstoque" pref="121" max="32767" attributes="0"/>
-                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                  <EmptySpace pref="92" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="2" attributes="0">
                       <Component id="Estoque" alignment="2" min="-2" pref="50" max="-2" attributes="0"/>
-                      <Component id="limparEstoque" alignment="2" min="-2" pref="50" max="-2" attributes="0"/>
                       <Component id="compra" alignment="2" min="-2" pref="50" max="-2" attributes="0"/>
                       <Component id="Venda" alignment="2" min="-2" pref="50" max="-2" attributes="0"/>
                       <Component id="editarProduto" alignment="2" min="-2" pref="50" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
+                  <EmptySpace pref="92" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -112,7 +109,7 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="Estoque">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Estoque"/>
+            <Property name="text" type="java.lang.String" value="VER ESTOQUE"/>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Cursor em Forma de M&#xe3;o"/>
@@ -130,28 +127,9 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EstoqueActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="limparEstoque">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Limpar Estoque"/>
-            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor em Forma de M&#xe3;o"/>
-            </Property>
-            <Property name="hideActionText" type="boolean" value="true"/>
-            <Property name="horizontalTextPosition" type="int" value="0"/>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[200, 100]"/>
-            </Property>
-            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[100, 50]"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="limparEstoqueActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JButton" name="compra">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Compra"/>
+            <Property name="text" type="java.lang.String" value="REGISTRAR COMPRA"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Cursor em Forma de M&#xe3;o"/>
             </Property>
@@ -170,7 +148,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="Venda">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Venda"/>
+            <Property name="text" type="java.lang.String" value="REGISTRAR VENDA"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Cursor em Forma de M&#xe3;o"/>
             </Property>
@@ -189,7 +167,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="editarProduto">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Editar Produto"/>
+            <Property name="text" type="java.lang.String" value="EDITAR PRODUTO"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Cursor em Forma de M&#xe3;o"/>
             </Property>

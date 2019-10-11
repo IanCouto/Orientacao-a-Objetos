@@ -28,7 +28,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.setExtendedState(MAXIMIZED_BOTH);
         jDesktopPane1 = new javax.swing.JDesktopPane();
         Estoque = new javax.swing.JButton();
-        limparEstoque = new javax.swing.JButton();
         compra = new javax.swing.JButton();
         Venda = new javax.swing.JButton();
         editarProduto = new javax.swing.JButton();
@@ -42,7 +41,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jDesktopPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        Estoque.setText("Estoque");
+        Estoque.setText("VER ESTOQUE");
         Estoque.setBorderPainted(false);
         Estoque.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Estoque.setHideActionText(true);
@@ -55,19 +54,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        limparEstoque.setText("Limpar Estoque");
-        limparEstoque.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        limparEstoque.setHideActionText(true);
-        limparEstoque.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        limparEstoque.setMaximumSize(new java.awt.Dimension(200, 100));
-        limparEstoque.setMinimumSize(new java.awt.Dimension(100, 50));
-        limparEstoque.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                limparEstoqueActionPerformed(evt);
-            }
-        });
-
-        compra.setText("Compra");
+        compra.setText("REGISTRAR COMPRA");
         compra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         compra.setHideActionText(true);
         compra.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -79,7 +66,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        Venda.setText("Venda");
+        Venda.setText("REGISTRAR VENDA");
         Venda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Venda.setHideActionText(true);
         Venda.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -91,7 +78,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        editarProduto.setText("Editar Produto");
+        editarProduto.setText("EDITAR PRODUTO");
         editarProduto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         editarProduto.setHideActionText(true);
         editarProduto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -108,32 +95,28 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(96, 96, 96)
                 .addComponent(Estoque, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Venda, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(compra, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(editarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(limparEstoque, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
-                .addGap(37, 37, 37))
+                .addGap(96, 96, 96))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(100, 100, 100)
+                .addContainerGap(92, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(Estoque, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(limparEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(compra, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Venda, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(editarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(84, 84, 84))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         jDesktopPane1.setLayer(Estoque, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(limparEstoque, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(compra, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(Venda, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(editarProduto, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -195,15 +178,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         a.setVisible(true);
     }//GEN-LAST:event_compraActionPerformed
 
-    private void limparEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limparEstoqueActionPerformed
-        int limpar;
-        limpar = JOptionPane.showConfirmDialog(null, "Deseja limpar todo o estoque?", "Limpar", JOptionPane.OK_CANCEL_OPTION);
-        //Ok = 0, Cancel = 2
-        if(limpar == 0){
-            //limpa o estoque;
-        }
-    }//GEN-LAST:event_limparEstoqueActionPerformed
-
     private void EstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EstoqueActionPerformed
         Estoque a = new Estoque();
         jDesktopPane1.add(a);
@@ -257,7 +231,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JButton limparEstoque;
     private javax.swing.JMenu sobre;
     // End of variables declaration//GEN-END:variables
 }
