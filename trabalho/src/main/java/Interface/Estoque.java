@@ -33,9 +33,10 @@ public class Estoque extends javax.swing.JInternalFrame {
         setForeground(java.awt.Color.lightGray);
         setIconifiable(true);
         setMaximizable(true);
+        setResizable(true);
         setTitle("Estoque");
 
-        jToggleButton1.setText("Compra");
+        jToggleButton1.setText("COMPRA");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton1ActionPerformed(evt);
@@ -47,7 +48,7 @@ public class Estoque extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Cod.", "Nome do Produto", "Quant.", "Preço"
+                "Id", "Nome do Produto", "Quantidade", "Preço"
             }
         ) {
             Class[] types = new Class [] {
@@ -67,14 +68,14 @@ public class Estoque extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setText("Editar Produto");
+        jButton1.setText("EDITAR PRODUTO");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Limpar");
+        jButton2.setText("LIMPAR");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -91,11 +92,11 @@ public class Estoque extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)))
+                        .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
