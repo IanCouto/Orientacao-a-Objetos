@@ -6,19 +6,20 @@
  Matheus Henrique Rubio		 Matrícula: 201876036
  */
 package com.mycompany.aplicacao;
-public class Produto {
+
+public class Produto{
 
     private String nome;
     private Integer id;
     private Integer quantidade;
-    private Float valor;
+    private Float preco;
     private String fornecedor;
 
     Produto(String nome, int id, int quantidade, float valor, String fornecedor) {
         this.nome = nome;
         this.id = id;
         this.quantidade = quantidade;
-        this.valor = valor;
+        this.preco = valor;
         this.fornecedor = fornecedor;
     }
 
@@ -26,7 +27,7 @@ public class Produto {
         this.nome = new String();
         this.id = null;
         this.quantidade = null;
-        this.valor = null;
+        this.preco = null;
         this.fornecedor = new String();
     }
 
@@ -55,11 +56,11 @@ public class Produto {
     }
 
     Float getValor() {
-        return valor;
+        return preco;
     }
 
     void setValor(float val) {
-        this.valor = val;
+        this.preco = val;
     }
     String getFornecedor(){
         return fornecedor;

@@ -13,7 +13,12 @@ public class Estoque {
     Estoque(Produto produto){
         this.produtos = new ArrayList();
     }
-    
+
+    public Estoque() {
+        this.produtos = null;
+        this.lixo = produtos;
+    }
+
     void adicionaProduto(Produto produto){
         produtos.add(produto);
     }
