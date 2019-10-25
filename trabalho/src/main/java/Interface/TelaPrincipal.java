@@ -9,6 +9,7 @@ package Interface;
 import java.awt.Frame;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import com.google.gson.Gson;
 public class TelaPrincipal extends javax.swing.JFrame {
     private Object jDesktopPane;
 
@@ -36,11 +37,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jInternalFrame3 = new javax.swing.JInternalFrame();
+        jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
         jButton6 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -157,17 +159,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setTitle("Nome do Pogramão Bolado");
         setMinimumSize(new java.awt.Dimension(100, 100));
 
-        jTabbedPane1.setBackground(new java.awt.Color(60, 63, 65));
-        jTabbedPane1.setForeground(new java.awt.Color(187, 187, 187));
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        jInternalFrame3.setBackground(new java.awt.Color(60, 63, 65));
         jInternalFrame3.setVisible(true);
 
         jTable3.setAutoCreateRowSorter(true);
-        jTable3.setBackground(new java.awt.Color(60, 63, 65));
         jTable3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTable3.setForeground(new java.awt.Color(187, 187, 187));
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -300,8 +297,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jTable3.setInheritsPopupMenu(true);
         jTable3.setNextFocusableComponent(this);
         jTable3.setOpaque(false);
-        jTable3.setSelectionBackground(new java.awt.Color(75, 110, 175));
-        jTable3.setSelectionForeground(new java.awt.Color(187, 187, 187));
         jTable3.setSurrendersFocusOnKeystroke(true);
         jScrollPane3.setViewportView(jTable3);
         jTable3.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
@@ -320,6 +315,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton9.setText("Limpar Lixeira");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+
         jButton8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton8.setText("Limpar Estoque");
         jButton8.setNextFocusableComponent(jButton8);
@@ -329,56 +332,56 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton9.setText("Limpar Lixeira");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jInternalFrame3Layout = new javax.swing.GroupLayout(jInternalFrame3.getContentPane());
-        jInternalFrame3.getContentPane().setLayout(jInternalFrame3Layout);
-        jInternalFrame3Layout.setHorizontalGroup(
-            jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame3Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3))
                 .addContainerGap())
-            .addComponent(jScrollPane3)
         );
-        jInternalFrame3Layout.setVerticalGroup(
-            jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame3Layout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        jInternalFrame3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton6, jButton8, jButton9});
+        jPanel4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton6, jButton8, jButton9});
+
+        javax.swing.GroupLayout jInternalFrame3Layout = new javax.swing.GroupLayout(jInternalFrame3.getContentPane());
+        jInternalFrame3.getContentPane().setLayout(jInternalFrame3Layout);
+        jInternalFrame3Layout.setHorizontalGroup(
+            jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jInternalFrame3Layout.setVerticalGroup(
+            jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         jTabbedPane1.addTab("Estoque", jInternalFrame3);
 
-        jPanel1.setBackground(new java.awt.Color(60, 63, 65));
-
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(187, 187, 187));
         jLabel1.setText("Buscar produto por Id:");
 
-        jTextField1.setBackground(new java.awt.Color(69, 73, 74));
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        jButton3.setBackground(new java.awt.Color(60, 63, 65));
         jButton3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(187, 187, 187));
         jButton3.setText("Adicionar Edição");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -387,10 +390,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(187, 187, 187));
         jLabel2.setText("Buscar produto por nome:");
 
-        jTextField2.setBackground(new java.awt.Color(69, 73, 74));
         jTextField2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -434,21 +435,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Editar Produto", jPanel1);
 
-        jPanel2.setBackground(new java.awt.Color(60, 63, 65));
-        jPanel2.setForeground(new java.awt.Color(187, 187, 187));
-
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(187, 187, 187));
         jLabel3.setText("Preço:");
 
-        jTextField3.setBackground(new java.awt.Color(69, 73, 74));
         jTextField3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(187, 187, 187));
         jLabel4.setText("Quantidade:");
 
-        jTextField4.setBackground(new java.awt.Color(69, 73, 74));
         jTextField4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -456,9 +450,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(60, 63, 65));
         jButton4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(187, 187, 187));
         jButton4.setText("Adicionar Produto");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -467,17 +459,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(187, 187, 187));
         jLabel5.setText("Fornecedor:");
 
-        jTextField5.setBackground(new java.awt.Color(69, 73, 74));
         jTextField5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(187, 187, 187));
         jLabel6.setText("Produto:");
 
-        jTextField6.setBackground(new java.awt.Color(69, 73, 74));
         jTextField6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -543,32 +531,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Registrar Compra", jPanel2);
 
-        jPanel3.setBackground(new java.awt.Color(60, 63, 65));
-        jPanel3.setForeground(new java.awt.Color(187, 187, 187));
-
-        jLabel7.setBackground(new java.awt.Color(60, 63, 65));
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(187, 187, 187));
         jLabel7.setText("Produto:");
 
-        jLabel8.setBackground(new java.awt.Color(60, 63, 65));
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(187, 187, 187));
         jLabel8.setText("Desconto:");
 
-        jLabel9.setBackground(new java.awt.Color(60, 63, 65));
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(187, 187, 187));
         jLabel9.setText("Reais:");
 
-        jLabel10.setBackground(new java.awt.Color(60, 63, 65));
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(187, 187, 187));
         jLabel10.setText("Procentagem:");
 
-        jButton7.setBackground(new java.awt.Color(60, 63, 65));
         jButton7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(187, 187, 187));
         jButton7.setText("REGISTRAR VENDA");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -576,7 +551,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jTextField7.setBackground(new java.awt.Color(69, 73, 74));
         jTextField7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -584,10 +558,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jTextField8.setBackground(new java.awt.Color(69, 73, 74));
         jTextField8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        jTextField9.setBackground(new java.awt.Color(69, 73, 74));
         jTextField9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -641,6 +613,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Registrar venda", jPanel3);
 
+        jMenuBar1.setBorder(null);
         jMenuBar1.setOpaque(false);
 
         sobre.setText("Ajuda");
@@ -667,7 +640,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
 
@@ -809,6 +782,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
