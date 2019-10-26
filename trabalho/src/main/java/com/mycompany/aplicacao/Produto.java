@@ -15,15 +15,15 @@ public class Produto{
     private Float preco;
     private String fornecedor;
 
-    Produto(String nome, int id, int quantidade, float valor, String fornecedor) {
+    public Produto(String nome, int quantidade, float valor, String fornecedor) {
         this.nome = nome;
-        this.id = id;
+        this.id = 0;
         this.quantidade = quantidade;
         this.preco = valor;
         this.fornecedor = fornecedor;
     }
 
-    Produto() {
+    public Produto() {
         this.nome = new String();
         this.id = null;
         this.quantidade = null;
@@ -31,42 +31,42 @@ public class Produto{
         this.fornecedor = new String();
     }
 
-    Integer getId() {
+    public Integer getId() {
         return id;
     }
 
-    void setId(int newId) {
+    public void setId(int newId) {
         this.id = newId;
     }
 
-    String getNome() {
+    public String getNome() {
         return nome;
     }
 
-    void setNome(String newNome) {
+    public void setNome(String newNome) {
         this.nome = newNome;
     }
 
-    Integer getQuantidade() {
+    public Integer getQuantidade() {
         return quantidade;
     }
 
-    void setQuantidade(int qtd) {
+    public void setQuantidade(int qtd) {
         this.quantidade = qtd;
     }
 
-    Float getValor() {
+    public Float getValor() {
         return preco;
     }
 
-    void setValor(float val) {
+    public void setValor(float val) {
         this.preco = val;
     }
-    String getFornecedor(){
+    public String getFornecedor(){
         return fornecedor;
     }
-    void setFornecedor(String fornecedor){
+    public void setFornecedor(String fornecedor){
         this.fornecedor = fornecedor;
     }
-    
+
 }
