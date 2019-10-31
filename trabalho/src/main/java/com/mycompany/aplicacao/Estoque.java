@@ -52,5 +52,9 @@ public class Estoque {
         produtos.clear();
         produtos = lixo;
     }
+    
+    public ArrayList<Produto> listaProdutos(){
+        return produtos;
+    }
 
 }

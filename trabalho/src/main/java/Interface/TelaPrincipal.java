@@ -10,6 +10,7 @@ import java.awt.Frame;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import com.google.gson.Gson;
+import javax.swing.table.DefaultTableModel;
 import com.mycompany.aplicacao.Produto;
 import com.mycompany.aplicacao.Estoque;
 public class TelaPrincipal extends javax.swing.JFrame{
@@ -172,9 +173,7 @@ public class TelaPrincipal extends javax.swing.JFrame{
         jTable3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Id", "Nome do Produto", "Quantidade", "Preço"
@@ -195,6 +194,7 @@ public class TelaPrincipal extends javax.swing.JFrame{
                 return canEdit [columnIndex];
             }
         });
+        jTable3.setToolTipText("");
         jTable3.setCellSelectionEnabled(true);
         jTable3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTable3.setDoubleBuffered(true);
@@ -636,8 +636,24 @@ public class TelaPrincipal extends javax.swing.JFrame{
     }//GEN-LAST:event_quantidadeTxtActionPerformed
 
     private void adicionarProtudobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarProtudobuttonActionPerformed
-        produto = new Produto(produtoTxt.getText(),Integer.parseInt(quantidadeTxt.getText()),Float.parseFloat(precoTxt.getText()),fornecedorTxt.getText());
-        estoque.adicionaProduto(produto);
+        int j = 0;
+        for(int i = 0; i < (estoque.listaProdutos().size()-1); i++){
+            if(produtoTxt.getText() == estoque.getProduto(i).getNome()){
+                estoque.getProduto(i).setQuantidade(estoque.getProduto(i).getQuantidade()+Integer.parseInt(quantidadeTxt.getText()));
+                j++;
+                break;
+            }
+        }
+        if(j==0){
+            produto = new Produto(produtoTxt.getText(),Integer.parseInt(quantidadeTxt.getText()),Float.parseFloat(precoTxt.getText()),fornecedorTxt.getText(),estoque.listaProdutos().size()+1);
+            estoque.adicionaProduto(produto);
+            String nome = estoque.getProduto(estoque.listaProdutos().size()-1).getNome();
+            Integer quantidade = estoque.getProduto(estoque.listaProdutos().size()-1).getQuantidade();
+            Float preco = estoque.getProduto(estoque.listaProdutos().size()-1).getValor();
+            Object[] row = {estoque.getProduto(estoque.listaProdutos().size()-1).getId(), nome, quantidade, preco};
+            DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+            model.addRow(row);
+        }
         fornecedorTxt.setText("");
         produtoTxt.setText("");
         precoTxt.setText("");

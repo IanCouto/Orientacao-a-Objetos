@@ -10,14 +10,14 @@ package com.mycompany.aplicacao;
 public class Produto{
 
     private String nome;
-    private Integer id;
+    private Integer id = 0;
     private Integer quantidade;
     private Float preco;
     private String fornecedor;
 
-    public Produto(String nome, int quantidade, float valor, String fornecedor) {
+    public Produto(String nome, int quantidade, float valor, String fornecedor, Integer id) {
         this.nome = nome;
-        this.id = 0;
+        this.id = id;
         this.quantidade = quantidade;
         this.preco = valor;
         this.fornecedor = fornecedor;
@@ -25,7 +25,7 @@ public class Produto{
 
     public Produto() {
         this.nome = new String();
-        this.id = null;
+        this.id = 0;
         this.quantidade = null;
         this.preco = null;
         this.fornecedor = new String();
