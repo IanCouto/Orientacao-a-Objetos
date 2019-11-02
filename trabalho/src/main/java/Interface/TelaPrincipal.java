@@ -621,10 +621,12 @@ public class TelaPrincipal extends javax.swing.JFrame{
 
     private void adicionarProtudobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarProtudobuttonActionPerformed
         int j = 0;
-        System.out.println(estoque.listaProdutos().size());
+        int tam = estoque.listaProdutos().size();
+        System.out.println(tam);
         for(int i = 0; i < (estoque.listaProdutos().size()); i++){
             if(produtoTxt.getText().equals(estoque.getProduto(i).getNome())){
                 estoque.getProduto(i).setQuantidade(estoque.getProduto(i).getQuantidade()+Integer.parseInt(quantidadeTxt.getSelectedItem().toString()));
+                JOptionPane.showMessageDialog(null, "Produto já cadastrado em sistema, favor alterar somente a quantidade.");
                 j = 1;
                 break;
             }
@@ -653,7 +655,8 @@ public class TelaPrincipal extends javax.swing.JFrame{
         int limpar;
         limpar = JOptionPane.showConfirmDialog(null, "Deseja limpar todo o estoque?", "Limpar", JOptionPane.OK_CANCEL_OPTION);
         //Ok = 0, Cancel = 2
-        if(limpar == 0){
+        if(limpar == JOptionPane.OK_OPTION){
+            limpaTabela();
             estoque.limpaEstoque();
         }
     }//GEN-LAST:event_jButton8ActionPerformed
@@ -676,7 +679,7 @@ public class TelaPrincipal extends javax.swing.JFrame{
         int limpar;
         limpar = JOptionPane.showConfirmDialog(null, "Deseja limpar todo o lixo?", "Limpar", JOptionPane.OK_CANCEL_OPTION);
         //Ok = 0, Cancel = 2
-        if(limpar == 0){
+        if(limpar == JOptionPane.OK_OPTION){
             estoque.limpaLixo();
         }
     }//GEN-LAST:event_jButton9ActionPerformed
@@ -690,9 +693,14 @@ public class TelaPrincipal extends javax.swing.JFrame{
     }//GEN-LAST:event_descontoReaisTxtActionPerformed
         //------Fim dos eventos------
     
-    /**
-     * @param args the command line arguments
-     */
+    public void limpaTabela(){
+        int i = estoque.listaProdutos().size()-1;
+        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+        while(i != -1){
+            model.removeRow(i);
+            i--;
+        }
+    }
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
