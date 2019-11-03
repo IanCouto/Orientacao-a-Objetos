@@ -56,5 +56,5 @@ public class Estoque {
     public ArrayList<Produto> listaProdutos(){
         return produtos;
     }
-
+    
 }

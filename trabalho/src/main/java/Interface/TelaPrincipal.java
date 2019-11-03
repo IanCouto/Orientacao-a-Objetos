@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 import javax.swing.table.DefaultTableModel;
 import com.mycompany.aplicacao.Produto;
 import com.mycompany.aplicacao.Estoque;
+import javax.swing.JTable;
 public class TelaPrincipal extends javax.swing.JFrame{
     Estoque estoque = new Estoque();
     Produto produto = new Produto();
@@ -59,12 +60,19 @@ public class TelaPrincipal extends javax.swing.JFrame{
         quantidadeTxt = new javax.swing.JComboBox<String>();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        buscaProduto = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        buscaId = new javax.swing.JTextField();
+        botaoBuscar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         buscaNome = new javax.swing.JTextField();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        buscarQuantidade = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        buscarPreco = new javax.swing.JTextField();
+        buscarFornecedor = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTable5 = new javax.swing.JTable();
+        botaoAdicionarEdicao = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -243,11 +251,11 @@ public class TelaPrincipal extends javax.swing.JFrame{
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                        .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                        .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))
+                        .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE))
                     .addComponent(jScrollPane3))
                 .addContainerGap())
         );
@@ -255,7 +263,7 @@ public class TelaPrincipal extends javax.swing.JFrame{
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -339,7 +347,7 @@ public class TelaPrincipal extends javax.swing.JFrame{
                                     .addComponent(jLabel4)
                                     .addComponent(quantidadeTxt, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 155, Short.MAX_VALUE)))
+                        .addGap(0, 418, Short.MAX_VALUE)))
                 .addGap(162, 162, 162))
         );
 
@@ -366,7 +374,7 @@ public class TelaPrincipal extends javax.swing.JFrame{
                     .addComponent(precoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(adicionarProtudobutton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(176, Short.MAX_VALUE))
+                .addContainerGap(256, Short.MAX_VALUE))
         );
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {adicionarProtudobutton, fornecedorTxt, precoTxt, produtoTxt});
@@ -376,13 +384,13 @@ public class TelaPrincipal extends javax.swing.JFrame{
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Buscar produto por Id:");
 
-        buscaProduto.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        buscaId.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton3.setText("Adicionar Edição");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        botaoBuscar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        botaoBuscar.setText("Buscar");
+        botaoBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                botaoBuscarActionPerformed(evt);
             }
         });
 
@@ -391,21 +399,36 @@ public class TelaPrincipal extends javax.swing.JFrame{
 
         buscaNome.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        jTable4.setAutoCreateRowSorter(true);
-        jTable4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        buscarQuantidade.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel11.setText("Buscar produto por quantidade:");
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel12.setText("Buscar produto por preço:");
+
+        buscarPreco.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        buscarFornecedor.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel13.setText("Buscar produto por fornecedor:");
+
+        jTable5.setAutoCreateRowSorter(true);
+        jTable5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jTable5.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Id", "Nome do Produto", "Quantidade", "Preço"
+                "Id", "Nome do Produto", "Fornecedor", "Quantidade", "Preço"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, true, true
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -416,20 +439,28 @@ public class TelaPrincipal extends javax.swing.JFrame{
                 return canEdit [columnIndex];
             }
         });
-        jTable4.setCellSelectionEnabled(true);
-        jTable4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTable4.setDoubleBuffered(true);
-        jTable4.setFillsViewportHeight(true);
-        jTable4.setFocusCycleRoot(true);
-        jTable4.setFocusTraversalPolicyProvider(true);
-        jTable4.setGridColor(new java.awt.Color(0, 0, 0));
-        jTable4.setInheritsPopupMenu(true);
-        jTable4.setNextFocusableComponent(this);
-        jTable4.setOpaque(false);
-        jTable4.setPreferredSize(new java.awt.Dimension(300, 64));
-        jTable4.setSurrendersFocusOnKeystroke(true);
-        jScrollPane4.setViewportView(jTable4);
-        jTable4.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        jTable5.setToolTipText("");
+        jTable5.setCellSelectionEnabled(true);
+        jTable5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTable5.setDoubleBuffered(true);
+        jTable5.setFillsViewportHeight(true);
+        jTable5.setFocusCycleRoot(true);
+        jTable5.setFocusTraversalPolicyProvider(true);
+        jTable5.setGridColor(new java.awt.Color(0, 0, 0));
+        jTable5.setInheritsPopupMenu(true);
+        jTable5.setNextFocusableComponent(this);
+        jTable5.setOpaque(false);
+        jTable5.setSurrendersFocusOnKeystroke(true);
+        jScrollPane5.setViewportView(jTable5);
+        jTable5.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+
+        botaoAdicionarEdicao.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        botaoAdicionarEdicao.setText("Adicionar Edição");
+        botaoAdicionarEdicao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoAdicionarEdicaoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -437,43 +468,64 @@ public class TelaPrincipal extends javax.swing.JFrame{
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane4)
-                        .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
-                        .addGap(252, 252, 252))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(buscaNome, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(buscaProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3))
-                        .addContainerGap(317, Short.MAX_VALUE))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(botaoAdicionarEdicao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botaoBuscar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buscarQuantidade, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                    .addComponent(buscarFornecedor, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                    .addComponent(buscaNome, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buscaId, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buscarPreco, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {buscaNome, buscaProduto, jButton3});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {botaoAdicionarEdicao, botaoBuscar, buscaId, buscaNome, buscarFornecedor, buscarPreco, buscarQuantidade});
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel1, jLabel11, jLabel12, jLabel13, jLabel2});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buscaNome, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buscaProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buscaNome, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buscaId, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buscarQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buscarPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buscarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(botaoBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(botaoAdicionarEdicao))
+                    .addComponent(jScrollPane5))
+                .addGap(35, 35, 35))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {buscaNome, buscaProduto, jButton3});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {botaoAdicionarEdicao, botaoBuscar, buscaId, buscaNome, buscarFornecedor, buscarPreco, buscarQuantidade});
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel1, jLabel11, jLabel12, jLabel13, jLabel2});
 
         jTabbedPane1.addTab("Editar Produto", jPanel1);
 
@@ -527,7 +579,7 @@ public class TelaPrincipal extends javax.swing.JFrame{
                             .addComponent(qtdVenda, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(vendaTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addContainerGap(317, Short.MAX_VALUE))
+                        .addContainerGap(580, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(registraVenda, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
@@ -566,7 +618,7 @@ public class TelaPrincipal extends javax.swing.JFrame{
                     .addComponent(descontoPorcentagemTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(registraVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(182, Short.MAX_VALUE))
+                .addContainerGap(262, Short.MAX_VALUE))
         );
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {descontoPorcentagemTxt, descontoReaisTxt, registraVenda, vendaTxt});
@@ -637,17 +689,17 @@ public class TelaPrincipal extends javax.swing.JFrame{
         //Ok = 0, Cancel = 2
         if(limpar == 0){
             estoque.recuperaLixo();
+            atualizaTabela(jTable3,estoque);
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void adicionarProtudobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarProtudobuttonActionPerformed
         int j = 0;
-        int tam = estoque.listaProdutos().size();
-        System.out.println(tam);
         for(int i = 0; i < (estoque.listaProdutos().size()); i++){
             if(produtoTxt.getText().equals(estoque.getProduto(i).getNome())){
                 estoque.getProduto(i).setQuantidade(estoque.getProduto(i).getQuantidade()+Integer.parseInt(quantidadeTxt.getSelectedItem().toString()));
-                JOptionPane.showMessageDialog(null, "Produto já cadastrado em sistema, favor alterar somente a quantidade.");
+                //JOptionPane.showMessageDialog(null, "Produto já cadastrado em sistema, favor alterar somente a quantidade.");
+                atualizaTabela(jTable3, estoque);
                 j = 1;
                 break;
             }
@@ -677,15 +729,10 @@ public class TelaPrincipal extends javax.swing.JFrame{
         limpar = JOptionPane.showConfirmDialog(null, "Deseja limpar todo o estoque?", "Limpar", JOptionPane.OK_CANCEL_OPTION);
         //Ok = 0, Cancel = 2
         if(limpar == JOptionPane.OK_OPTION){
-            limpaTabela();
             estoque.limpaEstoque();
+            atualizaTabela(jTable3, estoque);
         }
     }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showConfirmDialog(null, "jButton3");
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         int limpar;
@@ -718,26 +765,50 @@ public class TelaPrincipal extends javax.swing.JFrame{
                 if (prod.equals(estoque.listaProdutos().get(i).getNome())){
                     qtd = estoque.listaProdutos().get(i).getQuantidade() - qtd;
                     estoque.listaProdutos().get(i).setQuantidade(qtd);
-                    atualizaTabela();
+                    atualizaTabela(jTable3, estoque);
                     break;
                 }
             }
             vendaTxt.setText("");
         }
     }//GEN-LAST:event_registraVendaActionPerformed
+
+    private void botaoAdicionarEdicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdicionarEdicaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoAdicionarEdicaoActionPerformed
+
+    private void botaoBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoBuscarActionPerformed
+        Estoque aux = new Estoque();
+        for(int i = 0; i < estoque.listaProdutos().size(); i++){
+            if(     estoque.getProduto(i).getFornecedor().contains(buscarFornecedor.getText()) || 
+                    estoque.getProduto(i).getId() == Integer.parseInt(buscarFornecedor.getText()) ||
+                    estoque.getProduto(i).getNome().contains(buscaNome.getText())||
+                    estoque.getProduto(i).getQuantidade() == Integer.parseInt(buscarFornecedor.getText()) ||
+                    estoque.getProduto(i).getValor() == Float.parseFloat(buscarFornecedor.getText())){
+                aux.adicionaProduto(estoque.getProduto(i));
+            }
+        }
+        atualizaTabela(jTable5, estoque);
+        buscaId.setText("");
+        buscaNome.setText("");
+        buscarFornecedor.setText("");
+        buscarPreco.setText("");
+        buscarQuantidade.setText("");
+        
+    }//GEN-LAST:event_botaoBuscarActionPerformed
         //------Fim dos eventos------
     
-    public void limpaTabela(){
+    public void limpaTabela(JTable tabela){
         int i = estoque.listaProdutos().size()-1;
-        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+        DefaultTableModel model = (DefaultTableModel) tabela.getModel();
         while(i != -1){
             model.removeRow(i);
             i--;
         }
     }
     
-    public void imprimeTabela(){
-        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+    public void imprimeTabela(Estoque estoque, JTable a){
+        DefaultTableModel model = (DefaultTableModel) a.getModel();
         int i = estoque.listaProdutos().size();
         int j = 0;
             while (j <= i-1){
@@ -751,9 +822,9 @@ public class TelaPrincipal extends javax.swing.JFrame{
             }
     }
     
-    public void atualizaTabela(){
-        limpaTabela();
-        imprimeTabela();
+    public void atualizaTabela(JTable tabela, Estoque estoque){
+        limpaTabela(tabela);
+        imprimeTabela(estoque, tabela);
     }
     
     public static void main(String args[]) {
@@ -796,14 +867,18 @@ public class TelaPrincipal extends javax.swing.JFrame{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adicionarProtudobutton;
+    private javax.swing.JButton botaoAdicionarEdicao;
+    private javax.swing.JButton botaoBuscar;
+    private javax.swing.JTextField buscaId;
     private javax.swing.JTextField buscaNome;
-    private javax.swing.JTextField buscaProduto;
+    private javax.swing.JTextField buscarFornecedor;
+    private javax.swing.JTextField buscarPreco;
+    private javax.swing.JTextField buscarQuantidade;
     private javax.swing.JTextField descontoPorcentagemTxt;
     private javax.swing.JTextField descontoReaisTxt;
     private javax.swing.JTextField fornecedorTxt;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
@@ -811,6 +886,9 @@ public class TelaPrincipal extends javax.swing.JFrame{
     private javax.swing.JInternalFrame jInternalFrame3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -827,11 +905,11 @@ public class TelaPrincipal extends javax.swing.JFrame{
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
+    private javax.swing.JTable jTable5;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JTextField precoTxt;
     private javax.swing.JTextField produtoTxt;
