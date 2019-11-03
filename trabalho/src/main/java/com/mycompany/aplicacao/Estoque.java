@@ -45,6 +45,7 @@ public class Estoque {
     }
     
     public void limpaEstoque(){
+        lixo = produtos;
         produtos.clear();
     }
     
