@@ -267,7 +267,7 @@ public class TelaPrincipal extends javax.swing.JFrame{
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoRecuperaLixeira, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -378,7 +378,7 @@ public class TelaPrincipal extends javax.swing.JFrame{
                     .addComponent(precoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(adicionarProtudobutton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(256, Short.MAX_VALUE))
+                .addContainerGap(250, Short.MAX_VALUE))
         );
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {adicionarProtudobutton, fornecedorTxt, precoTxt, produtoTxt});
@@ -620,12 +620,12 @@ public class TelaPrincipal extends javax.swing.JFrame{
                     .addComponent(jLabel9)
                     .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(descontoReaisTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(descontoPorcentagemTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(descontoPorcentagemTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(descontoReaisTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(registraVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(262, Short.MAX_VALUE))
+                .addContainerGap(256, Short.MAX_VALUE))
         );
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {descontoPorcentagemTxt, descontoReaisTxt, registraVenda, vendaTxt});
@@ -664,9 +664,10 @@ public class TelaPrincipal extends javax.swing.JFrame{
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jTabbedPane1)
-                .addGap(0, 0, 0))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -781,13 +782,29 @@ public class TelaPrincipal extends javax.swing.JFrame{
     }//GEN-LAST:event_registraVendaActionPerformed
 
     private void botaoBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoBuscarActionPerformed
+        int k = 0;
         for(int i = 0; i < estoque.listaProdutos().size(); i++){
-            if(     estoque.getProduto(i).getFornecedor().contains(buscarFornecedor.getText()) || 
-                    estoque.getProduto(i).getId() == Integer.parseInt(buscarFornecedor.getText()) ||
-                    estoque.getProduto(i).getNome().contains(buscaNome.getText())||
-                    estoque.getProduto(i).getQuantidade() == Integer.parseInt(buscarFornecedor.getText()) ||
-                    estoque.getProduto(i).getValor() == Float.parseFloat(buscarFornecedor.getText())){
+            if(estoque.getProduto(i).getFornecedor().equals(buscarFornecedor.getText())){
+                k++;
+            }
+            if(estoque.getProduto(i).getId().toString().equals(buscarFornecedor.getText())){
+                k++;
+            }
+            if(estoque.getProduto(i).getNome().equals(buscaNome.getText())){
+                k++;
+            }
+            if(estoque.getProduto(i).getQuantidade().toString().equals(buscarFornecedor.getText())){
+                k++;
+            }
+            if(estoque.getProduto(i).getValor().toString().equals(buscarFornecedor.getText())){
+                k++;
+            }
+            if(k > 0){
                 aux.adicionaProduto(estoque.getProduto(i));
+                k=0;
+                DefaultTableModel model = (DefaultTableModel) jTable5.getModel();
+                Object[] row = {aux.getProduto(aux.listaProdutos().size()-1).getId(), aux.getProduto(aux.listaProdutos().size()-1).getNome(), aux.getProduto(aux.listaProdutos().size()-1).getFornecedor(), aux.getProduto(aux.listaProdutos().size()-1).getQuantidade(), aux.getProduto(aux.listaProdutos().size()-1).getValor()};
+                model.addRow(row);
             }
         }
         atualizaTabela(jTable5, aux);
