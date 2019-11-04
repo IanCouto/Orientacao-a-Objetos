@@ -816,12 +816,14 @@ public class TelaPrincipal extends javax.swing.JFrame{
     }//GEN-LAST:event_botaoBuscarActionPerformed
 
     private void botaoAdicionarEdicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdicionarEdicaoActionPerformed
-        for(int i = 0; i < estoque.listaProdutos().size(); i++){
-            if(estoque.getProduto(i).getId() == aux.getProduto(i).getId()){
-                estoque.getProduto(i).setFornecedor(aux.getProduto(i).getFornecedor());
-                estoque.getProduto(i).setNome(aux.getProduto(i).getNome());
-                estoque.getProduto(i).setQuantidade(aux.getProduto(i).getQuantidade());
-                estoque.getProduto(i).setValor(aux.getProduto(i).getValor());
+        for(int i = 0, k =0; i < estoque.listaProdutos().size() || k < aux.listaProdutos().size(); i++){
+            if(estoque.getProduto(i).getId() == aux.getProduto(k).getId()){
+                estoque.getProduto(i).setFornecedor(aux.getProduto(k).getFornecedor());
+                estoque.getProduto(i).setNome(aux.getProduto(k).getNome());
+                estoque.getProduto(i).setQuantidade(aux.getProduto(k).getQuantidade());
+                estoque.getProduto(i).setValor(aux.getProduto(k).getValor());
+                k++;
+                i = 0;
             }
         }
         atualizaTabela(jTable3, estoque);
