@@ -695,9 +695,9 @@ public class TelaPrincipal extends javax.swing.JFrame{
         int limpar;
         limpar = JOptionPane.showConfirmDialog(null, "Deseja recuperar todo o conteúdo da lixeira e substituir pelo estoque?", "Limpar", JOptionPane.OK_CANCEL_OPTION);
         //Ok = 0, Cancel = 2
-        if(limpar == 0){
+        if(limpar == JOptionPane.OK_OPTION){
             estoque.recuperaLixo();
-            atualizaTabela(jTable3,estoque);
+            imprimeTabela(estoque, jTable3);
         }
     }//GEN-LAST:event_botaoRecuperaLixeiraActionPerformed
 
@@ -737,8 +737,8 @@ public class TelaPrincipal extends javax.swing.JFrame{
         limpar = JOptionPane.showConfirmDialog(null, "Deseja limpar todo o estoque?", "Limpar", JOptionPane.OK_CANCEL_OPTION);
         //Ok = 0, Cancel = 2
         if(limpar == JOptionPane.OK_OPTION){
+            limpaTabela(estoque, jTable3);
             estoque.limpaEstoque();
-            atualizaTabela(jTable3, estoque);
         }
     }//GEN-LAST:event_botaoLimpaEstoqueActionPerformed
 
@@ -828,11 +828,11 @@ public class TelaPrincipal extends javax.swing.JFrame{
         }
         atualizaTabela(jTable3, estoque);
         aux.limpaEstoque();
-        limpaTabela(jTable5);
+        limpaTabela(estoque, jTable5);
     }//GEN-LAST:event_botaoAdicionarEdicaoActionPerformed
         //------Fim dos eventos------
     
-    public void limpaTabela(JTable tabela){
+    public void limpaTabela(Estoque estoque, JTable tabela){
         int i = estoque.listaProdutos().size()-1;
         DefaultTableModel model = (DefaultTableModel) tabela.getModel();
         while(i != -1){
@@ -841,8 +841,8 @@ public class TelaPrincipal extends javax.swing.JFrame{
         }
     }
     
-    public void imprimeTabela(Estoque estoque, JTable a){
-        DefaultTableModel model = (DefaultTableModel) a.getModel();
+    public void imprimeTabela(Estoque estoque, JTable tabela){
+        DefaultTableModel model = (DefaultTableModel) tabela.getModel();
         int i = estoque.listaProdutos().size();
         int j = 0;
             while (j <= i-1){
@@ -857,8 +857,8 @@ public class TelaPrincipal extends javax.swing.JFrame{
     }
     
     public void atualizaTabela(JTable tabela, Estoque estoque){
-        limpaTabela(tabela);
-        imprimeTabela(estoque, tabela);
+        limpaTabela(estoque, jTable3);
+        imprimeTabela(estoque, jTable3);
     }
     
     public static void main(String args[]) {
