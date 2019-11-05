@@ -785,11 +785,11 @@ public class TelaPrincipal extends javax.swing.JFrame{
 
     private void botaoBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoBuscarActionPerformed
         int k = 0;
+        limpaTabela(aux, jTable5);
         DefaultTableModel model = (DefaultTableModel) jTable5.getModel();
         for(int i = 0; i < estoque.listaProdutos().size(); i++){
             if(!buscarFornecedor.getText().isEmpty() && estoque.getProduto(i).getFornecedor().contains(buscarFornecedor.getText())){
                 k++;
-                
             }
             if(!buscaId.getText().isEmpty() && estoque.getProduto(i).getId().toString().contains(buscaId.getText())){
                 k++;
@@ -833,8 +833,7 @@ public class TelaPrincipal extends javax.swing.JFrame{
         aux.limpaEstoque();
         limpaTabela(estoque, jTable5);
     }//GEN-LAST:event_botaoAdicionarEdicaoActionPerformed
-        //------Fim dos eventos------
-    
+
     public void limpaTabela(Estoque estoque, JTable tabela){
         int i = estoque.listaProdutos().size()-1;
         DefaultTableModel model = (DefaultTableModel) tabela.getModel();
@@ -897,7 +896,6 @@ public class TelaPrincipal extends javax.swing.JFrame{
                 tela.setVisible(true);
             }
         });
-        
     }
     
     
