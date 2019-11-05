@@ -666,7 +666,7 @@ public class TelaPrincipal extends javax.swing.JFrame{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
 
@@ -694,7 +694,6 @@ public class TelaPrincipal extends javax.swing.JFrame{
     private void botaoRecuperaLixeiraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRecuperaLixeiraActionPerformed
         int limpar;
         limpar = JOptionPane.showConfirmDialog(null, "Deseja recuperar todo o conteúdo da lixeira e substituir pelo estoque?", "Limpar", JOptionPane.OK_CANCEL_OPTION);
-        //Ok = 0, Cancel = 2
         if(limpar == JOptionPane.OK_OPTION){
             estoque.recuperaLixo();
             imprimeTabela(estoque, jTable3);

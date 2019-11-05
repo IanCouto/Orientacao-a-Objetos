@@ -45,13 +45,17 @@ public class Estoque {
     }
     
     public void limpaEstoque(){
-        lixo = produtos;
+        for (int i = 0; i < produtos.size(); i++) {
+            lixo.add(getProduto(i));
+        }
         produtos.clear();
     }
     
     public void recuperaLixo(){
         produtos.clear();
-        produtos = lixo;
+        for (int i = 0; i < lixo.size(); i++) {
+            produtos.add(lixo.get(i));
+        }
     }
     
     public ArrayList<Produto> listaProdutos(){
