@@ -744,7 +744,6 @@ public class TelaPrincipal extends javax.swing.JFrame{
     private void botaoLimpaLixeiraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLimpaLixeiraActionPerformed
         int limpar;
         limpar = JOptionPane.showConfirmDialog(null, "Deseja limpar todo o lixo?", "Limpar", JOptionPane.OK_CANCEL_OPTION);
-        //Ok = 0, Cancel = 2
         if(limpar == JOptionPane.OK_OPTION){
             estoque.limpaLixo();
         }
@@ -770,6 +769,10 @@ public class TelaPrincipal extends javax.swing.JFrame{
             Integer qtd = Integer.parseInt(qtdVenda.getSelectedItem().toString());
             for (int i = 0; i <= estoque.listaProdutos().size(); i++){
                 if (prod.equals(estoque.listaProdutos().get(i).getNome())){
+                    if(estoque.getProduto(i).getQuantidade() - qtd < 0){
+                        JOptionPane.showMessageDialog(precoTxt, "Quantidade em estoque insuficiente. A venda não pode ser concluida.");
+                        break;
+                    }
                     qtd = estoque.listaProdutos().get(i).getQuantidade() - qtd;
                     estoque.listaProdutos().get(i).setQuantidade(qtd);
                     atualizaTabela(jTable3, estoque);
@@ -782,26 +785,27 @@ public class TelaPrincipal extends javax.swing.JFrame{
 
     private void botaoBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoBuscarActionPerformed
         int k = 0;
+        DefaultTableModel model = (DefaultTableModel) jTable5.getModel();
         for(int i = 0; i < estoque.listaProdutos().size(); i++){
-            if(estoque.getProduto(i).getFornecedor().equals(buscarFornecedor.getText())){
+            if(!buscarFornecedor.getText().isEmpty() && estoque.getProduto(i).getFornecedor().contains(buscarFornecedor.getText())){
+                k++;
+                
+            }
+            if(!buscaId.getText().isEmpty() && estoque.getProduto(i).getId().toString().contains(buscaId.getText())){
                 k++;
             }
-            if(estoque.getProduto(i).getId().toString().equals(buscarFornecedor.getText())){
+            if(!buscaNome.getText().isEmpty() && estoque.getProduto(i).getNome().contains(buscaNome.getText())){
                 k++;
             }
-            if(estoque.getProduto(i).getNome().equals(buscaNome.getText())){
+            if(!buscarQuantidade.getText().isEmpty() && estoque.getProduto(i).getQuantidade().toString().contains(buscarQuantidade.getText())){
                 k++;
             }
-            if(estoque.getProduto(i).getQuantidade().toString().equals(buscarFornecedor.getText())){
-                k++;
-            }
-            if(estoque.getProduto(i).getValor().toString().equals(buscarFornecedor.getText())){
+            if(!buscarPreco.getText().isEmpty() && estoque.getProduto(i).getValor().toString().contains(buscarPreco.getText())){
                 k++;
             }
             if(k > 0){
                 aux.adicionaProduto(estoque.getProduto(i));
                 k=0;
-                DefaultTableModel model = (DefaultTableModel) jTable5.getModel();
                 Object[] row = {aux.getProduto(aux.listaProdutos().size()-1).getId(), aux.getProduto(aux.listaProdutos().size()-1).getNome(), aux.getProduto(aux.listaProdutos().size()-1).getFornecedor(), aux.getProduto(aux.listaProdutos().size()-1).getQuantidade(), aux.getProduto(aux.listaProdutos().size()-1).getValor()};
                 model.addRow(row);
             }
@@ -856,8 +860,8 @@ public class TelaPrincipal extends javax.swing.JFrame{
     }
     
     public void atualizaTabela(JTable tabela, Estoque estoque){
-        limpaTabela(estoque, jTable3);
-        imprimeTabela(estoque, jTable3);
+        limpaTabela(estoque, tabela);
+        imprimeTabela(estoque, tabela);
     }
     
     public static void main(String args[]) {
