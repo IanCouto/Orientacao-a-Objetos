@@ -168,7 +168,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTabbedPane1" max="32767" attributes="0"/>
+              <Component id="jTabbedPane1" pref="578" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -218,11 +218,11 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="botaoLimpaEstoque" pref="317" max="32767" attributes="0"/>
+                                  <Component id="botaoLimpaEstoque" pref="159" max="32767" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="botaoRecuperaLixeira" pref="316" max="32767" attributes="0"/>
+                                  <Component id="botaoRecuperaLixeira" max="32767" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="botaoLimpaLixeira" pref="317" max="32767" attributes="0"/>
+                                  <Component id="botaoLimpaLixeira" pref="159" max="32767" attributes="0"/>
                               </Group>
                               <Component id="jScrollPane3" max="32767" attributes="0"/>
                           </Group>
@@ -234,7 +234,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane3" pref="447" max="32767" attributes="0"/>
+                          <Component id="jScrollPane3" pref="434" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="botaoRecuperaLixeira" linkSize="7" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
@@ -397,7 +397,7 @@
                                   </Group>
                                   <Component id="jLabel5" alignment="0" min="-2" pref="113" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="418" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="162" max="-2" attributes="0"/>
@@ -1546,7 +1546,7 @@
                           <Component id="jLabel1" linkSize="16" alignment="0" min="-2" pref="264" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="jScrollPane5" pref="568" max="32767" attributes="0"/>
+                      <Component id="jScrollPane5" pref="144" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -1785,7 +1785,7 @@
                                   <Component id="vendaTxt" linkSize="12" pref="402" max="32767" attributes="0"/>
                                   <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="580" max="32767" attributes="0"/>
+                              <EmptySpace pref="162" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
