@@ -4,21 +4,29 @@ Arthur Rodrigues Fernandes      Matrícula: 201835005
 Augusto Castilho Medeiros       Matrícula: 201876044
 Ian Couto de Paula		Matrícula: 201876002
 Matheus Henrique Rubio		Matrícula: 201876036
-*/
+ */
 package Interface;
+
 import java.awt.Frame;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import com.google.gson.Gson;
+import com.mycompany.aplicacao.Banco;
 import javax.swing.table.DefaultTableModel;
 import com.mycompany.aplicacao.Produto;
 import com.mycompany.aplicacao.Estoque;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTable;
-public class TelaPrincipal extends javax.swing.JFrame{
+
+public class TelaPrincipal extends javax.swing.JFrame {
+
     Estoque estoque;
     Produto produto;
     Estoque aux;
     private Object jDesktopPane;
+
     /**
      * Creates new form Login
      */
@@ -691,7 +699,7 @@ public class TelaPrincipal extends javax.swing.JFrame{
     private void botaoRecuperaLixeiraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRecuperaLixeiraActionPerformed
         int limpar;
         limpar = JOptionPane.showConfirmDialog(null, "Deseja recuperar todo o conteúdo da lixeira e substituir pelo estoque?", "Limpar", JOptionPane.OK_CANCEL_OPTION);
-        if(limpar == JOptionPane.OK_OPTION){
+        if (limpar == JOptionPane.OK_OPTION) {
             estoque.recuperaLixo();
             imprimeTabela(estoque, jTable3);
         }
@@ -699,25 +707,35 @@ public class TelaPrincipal extends javax.swing.JFrame{
 
     private void adicionarProtudobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarProtudobuttonActionPerformed
         int j = 0;
-        for(int i = 0; i < (estoque.listaProdutos().size()); i++){
-            if(produtoTxt.getText().equals(estoque.getProduto(i).getNome())){
-                estoque.getProduto(i).setQuantidade(estoque.getProduto(i).getQuantidade()+Integer.parseInt(quantidadeTxt.getSelectedItem().toString()));
-                //JOptionPane.showMessageDialog(null, "Produto já cadastrado em sistema, favor alterar somente a quantidade.");
-                atualizaTabela(jTable3, estoque);
+        for (int i = 0; i < (estoque.listaProdutos().size()); i++) {
+            if (produtoTxt.getText().equals(estoque.getProduto(i).getNome())) {
+                //estoque.getProduto(i).setQuantidade(estoque.getProduto(i).getQuantidade()+Integer.parseInt(quantidadeTxt.getSelectedItem().toString()));
+                JOptionPane.showMessageDialog(null, "Produto já cadastrado em sistema, favor alterar somente a quantidade.");
+                //atualizaTabela(jTable3, estoque);
                 j = 1;
                 break;
             }
         }
-        if(j==0){
-            produto = new Produto(produtoTxt.getText(),Integer.parseInt(quantidadeTxt.getSelectedItem().toString()),Float.parseFloat(precoTxt.getText()),fornecedorTxt.getText(),estoque.listaProdutos().size()+1);
-            estoque.adicionaProduto(produto);
-            String nome = estoque.getProduto(estoque.listaProdutos().size()-1).getNome();
-            String fornecedor = estoque.getProduto(estoque.listaProdutos().size()-1).getFornecedor();
-            Integer quantidade = estoque.getProduto(estoque.listaProdutos().size()-1).getQuantidade();
-            Float preco = estoque.getProduto(estoque.listaProdutos().size()-1).getValor();
-            Object[] row = {estoque.getProduto(estoque.listaProdutos().size()-1).getId(), nome, fornecedor, quantidade, preco};
-            DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
-            model.addRow(row);
+        if (j == 0) {
+            if (produtoTxt.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Insira um nome para o produto");
+            } else {
+                produto = new Produto(produtoTxt.getText(), Integer.parseInt(quantidadeTxt.getSelectedItem().toString()), Float.parseFloat(precoTxt.getText()), fornecedorTxt.getText(), estoque.listaProdutos().size() + 1);
+                estoque.adicionaProduto(produto);
+                String nome = estoque.getProduto(estoque.listaProdutos().size() - 1).getNome();
+                String fornecedor = estoque.getProduto(estoque.listaProdutos().size() - 1).getFornecedor();
+                Integer quantidade = estoque.getProduto(estoque.listaProdutos().size() - 1).getQuantidade();
+                Float preco = estoque.getProduto(estoque.listaProdutos().size() - 1).getValor();
+                Object[] row = {estoque.getProduto(estoque.listaProdutos().size() - 1).getId(), nome, fornecedor, quantidade, preco};
+                DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+                model.addRow(row);
+                Banco banco = new Banco(estoque);
+                try {
+                    banco.escreveArquivo();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
         }
         fornecedorTxt.setText("");
         produtoTxt.setText("");
@@ -732,7 +750,7 @@ public class TelaPrincipal extends javax.swing.JFrame{
         int limpar;
         limpar = JOptionPane.showConfirmDialog(null, "Deseja limpar todo o estoque?", "Limpar", JOptionPane.OK_CANCEL_OPTION);
         //Ok = 0, Cancel = 2
-        if(limpar == JOptionPane.OK_OPTION){
+        if (limpar == JOptionPane.OK_OPTION) {
             limpaTabela(estoque, jTable3);
             estoque.limpaEstoque();
         }
@@ -741,13 +759,13 @@ public class TelaPrincipal extends javax.swing.JFrame{
     private void botaoLimpaLixeiraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLimpaLixeiraActionPerformed
         int limpar;
         limpar = JOptionPane.showConfirmDialog(null, "Deseja limpar todo o lixo?", "Limpar", JOptionPane.OK_CANCEL_OPTION);
-        if(limpar == JOptionPane.OK_OPTION){
+        if (limpar == JOptionPane.OK_OPTION) {
             estoque.limpaLixo();
         }
     }//GEN-LAST:event_botaoLimpaLixeiraActionPerformed
 
     private void fornecedorTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fornecedorTxtActionPerformed
-        
+
     }//GEN-LAST:event_fornecedorTxtActionPerformed
 
     private void descontoReaisTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descontoReaisTxtActionPerformed
@@ -761,12 +779,12 @@ public class TelaPrincipal extends javax.swing.JFrame{
     private void registraVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registraVendaActionPerformed
         // TODO add your handling code here:
         int confirm = JOptionPane.showConfirmDialog(null, "Deseja finalizar a venda?", "Venda", JOptionPane.OK_CANCEL_OPTION);
-        if (confirm == JOptionPane.OK_OPTION){
+        if (confirm == JOptionPane.OK_OPTION) {
             String prod = vendaTxt.getText();
             Integer qtd = Integer.parseInt(qtdVenda.getSelectedItem().toString());
-            for (int i = 0; i <= estoque.listaProdutos().size(); i++){
-                if (prod.equals(estoque.listaProdutos().get(i).getNome())){
-                    if(estoque.getProduto(i).getQuantidade() - qtd < 0){
+            for (int i = 0; i <= estoque.listaProdutos().size(); i++) {
+                if (prod.equals(estoque.listaProdutos().get(i).getNome())) {
+                    if (estoque.getProduto(i).getQuantidade() - qtd < 0) {
                         JOptionPane.showMessageDialog(precoTxt, "Quantidade em estoque insuficiente. A venda não pode ser concluida.");
                         break;
                     }
@@ -785,26 +803,26 @@ public class TelaPrincipal extends javax.swing.JFrame{
         //aux.limpaEstoque();
         //limpaTabela(aux, jTable5);
         DefaultTableModel model = (DefaultTableModel) jTable5.getModel();
-        for(int i = 0; i < estoque.listaProdutos().size(); i++){
-            if(!buscarFornecedor.getText().isEmpty() && estoque.getProduto(i).getFornecedor().contains(buscarFornecedor.getText())){
+        for (int i = 0; i < estoque.listaProdutos().size(); i++) {
+            if (!buscarFornecedor.getText().isEmpty() && estoque.getProduto(i).getFornecedor().contains(buscarFornecedor.getText())) {
                 k++;
             }
-            if(!buscaId.getText().isEmpty() && estoque.getProduto(i).getId().toString().contains(buscaId.getText())){
+            if (!buscaId.getText().isEmpty() && estoque.getProduto(i).getId().toString().contains(buscaId.getText())) {
                 k++;
             }
-            if(!buscaNome.getText().isEmpty() && estoque.getProduto(i).getNome().contains(buscaNome.getText())){
+            if (!buscaNome.getText().isEmpty() && estoque.getProduto(i).getNome().contains(buscaNome.getText())) {
                 k++;
             }
-            if(!buscarQuantidade.getText().isEmpty() && estoque.getProduto(i).getQuantidade().toString().contains(buscarQuantidade.getText())){
+            if (!buscarQuantidade.getText().isEmpty() && estoque.getProduto(i).getQuantidade().toString().contains(buscarQuantidade.getText())) {
                 k++;
             }
-            if(!buscarPreco.getText().isEmpty() && estoque.getProduto(i).getValor().toString().contains(buscarPreco.getText())){
+            if (!buscarPreco.getText().isEmpty() && estoque.getProduto(i).getValor().toString().contains(buscarPreco.getText())) {
                 k++;
             }
-            if(k > 0){
+            if (k > 0) {
                 aux.adicionaProduto(estoque.getProduto(i));
-                k=0;
-                Object[] row = {aux.getProduto(aux.listaProdutos().size()-1).getId(), aux.getProduto(aux.listaProdutos().size()-1).getNome(), aux.getProduto(aux.listaProdutos().size()-1).getFornecedor(), aux.getProduto(aux.listaProdutos().size()-1).getQuantidade(), aux.getProduto(aux.listaProdutos().size()-1).getValor()};
+                k = 0;
+                Object[] row = {aux.getProduto(aux.listaProdutos().size() - 1).getId(), aux.getProduto(aux.listaProdutos().size() - 1).getNome(), aux.getProduto(aux.listaProdutos().size() - 1).getFornecedor(), aux.getProduto(aux.listaProdutos().size() - 1).getQuantidade(), aux.getProduto(aux.listaProdutos().size() - 1).getValor()};
                 model.addRow(row);
             }
         }
@@ -825,14 +843,14 @@ public class TelaPrincipal extends javax.swing.JFrame{
         String nomeaux;
         Integer quantidadeaux;
         Float valoraux;
-        
-        for(int i = 0; i < aux.listaProdutos().size(); i++){
-            for(int k = 0; k < estoque.listaProdutos().size(); k++){
-                if(estoque.getProduto(i).getId() == aux.getProduto(k).getId()){
+
+        for (int i = 0; i < aux.listaProdutos().size(); i++) {
+            for (int k = 0; k < estoque.listaProdutos().size(); k++) {
+                if (estoque.getProduto(i).getId() == aux.getProduto(k).getId()) {
                     nomeaux = model.getValueAt(i, 1).toString();
                     fornecedoraux = model.getValueAt(i, 2).toString();
                     quantidadeaux = Integer.parseInt(model.getValueAt(i, 3).toString());
-                    valoraux = Float.parseFloat(model.getValueAt(i, 4).toString());                
+                    valoraux = Float.parseFloat(model.getValueAt(i, 4).toString());
                     estoque.listaProdutos().get(i).setFornecedor(fornecedoraux);
                     estoque.listaProdutos().get(i).setNome(nomeaux);
                     estoque.listaProdutos().get(i).setQuantidade(quantidadeaux);
@@ -845,35 +863,35 @@ public class TelaPrincipal extends javax.swing.JFrame{
         limpaTabela(estoque, jTable5);
     }//GEN-LAST:event_botaoAdicionarEdicaoActionPerformed
 
-    public void limpaTabela(Estoque estoque, JTable tabela){
-        int i = estoque.listaProdutos().size()-1;
+    public void limpaTabela(Estoque estoque, JTable tabela) {
+        int i = estoque.listaProdutos().size() - 1;
         DefaultTableModel model = (DefaultTableModel) tabela.getModel();
-        while(i != -1){
+        while (i != -1) {
             model.removeRow(i);
             i--;
         }
     }
-    
-    public void imprimeTabela(Estoque estoque, JTable tabela){
+
+    public void imprimeTabela(Estoque estoque, JTable tabela) {
         DefaultTableModel model = (DefaultTableModel) tabela.getModel();
         int i = estoque.listaProdutos().size();
         int j = 0;
-            while (j <= i-1){
-                String nome = estoque.getProduto(j).getNome();
-                String fornecedor = estoque.getProduto(j).getFornecedor();
-                Integer quantidade = estoque.getProduto(j).getQuantidade();
-                Float preco = estoque.getProduto(j).getValor();
-                Object[] row = {estoque.getProduto(j).getId(), nome, fornecedor, quantidade, preco};
-                model.addRow(row);
-                j++;
-            }
+        while (j <= i - 1) {
+            String nome = estoque.getProduto(j).getNome();
+            String fornecedor = estoque.getProduto(j).getFornecedor();
+            Integer quantidade = estoque.getProduto(j).getQuantidade();
+            Float preco = estoque.getProduto(j).getValor();
+            Object[] row = {estoque.getProduto(j).getId(), nome, fornecedor, quantidade, preco};
+            model.addRow(row);
+            j++;
+        }
     }
-    
-    public void atualizaTabela(JTable tabela, Estoque estoque){
+
+    public void atualizaTabela(JTable tabela, Estoque estoque) {
         limpaTabela(estoque, tabela);
         imprimeTabela(estoque, tabela);
     }
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -908,8 +926,7 @@ public class TelaPrincipal extends javax.swing.JFrame{
             }
         });
     }
-    
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adicionarProtudobutton;
