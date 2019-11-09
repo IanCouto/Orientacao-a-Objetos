@@ -41,7 +41,7 @@ public class Banco {
     public void escreveArquivo() throws IOException {
         try {
             //Apenas no windows, tem q mudar qnd for pro Linux
-            FileWriter writer = new FileWriter("D:\\Backup\\Downloads\\Orientacao-a-Objetos\\trabalho\\src\\main\\resources\\estoque.json");
+            FileWriter writer = new FileWriter("estoque.json");
             writer.write(json);
             writer.close();
         } catch (IOException e) {
@@ -58,7 +58,7 @@ public class Banco {
     public Estoque pegaArquivo() throws IOException {
         try {
             //Apenas no windows, tem q mudar qnd for pro Linux
-            BufferedReader br = new BufferedReader(new FileReader("D:\\Backup\\Downloads\\Orientacao-a-Objetos\\trabalho\\src\\main\\resources\\estoque.json"));
+            BufferedReader br = new BufferedReader(new FileReader("estoque.json"));
 
             tabela = gson.fromJson(br, Estoque.class);
         } catch (IOException e) {
