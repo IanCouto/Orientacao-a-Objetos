@@ -10,7 +10,6 @@ package Interface;
 import java.awt.Frame;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import com.google.gson.Gson;
 import com.mycompany.aplicacao.Banco;
 import javax.swing.table.DefaultTableModel;
 import com.mycompany.aplicacao.Produto;
@@ -709,6 +708,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         int limpar;
         limpar = JOptionPane.showConfirmDialog(null, "Deseja recuperar todo o conteúdo da lixeira e substituir pelo estoque?", "Limpar", JOptionPane.OK_CANCEL_OPTION);
         if (limpar == JOptionPane.OK_OPTION) {
+            limpaTabela(estoque, jTable3);
             estoque.recuperaLixo();
             imprimeTabela(estoque, jTable3);
             atualizaJson(estoque);
@@ -756,6 +756,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         limpar = JOptionPane.showConfirmDialog(null, "Deseja limpar todo o estoque?", "Limpar", JOptionPane.OK_CANCEL_OPTION);
         //Ok = 0, Cancel = 2
         if (limpar == JOptionPane.OK_OPTION) {
+            estoque.limpaLixo();
             limpaTabela(estoque, jTable3);
             estoque.limpaEstoque();
             atualizaJson(estoque);

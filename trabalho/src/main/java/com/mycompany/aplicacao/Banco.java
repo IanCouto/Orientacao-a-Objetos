@@ -51,6 +51,7 @@ public class Banco {
 
     /**
      *
+     * @return tabela - retona o estoque que foi traduzido para Java
      * @throws IOException - precaução para casos de erros de leitura de
      * arquivos
      */
