@@ -22,7 +22,7 @@ public class Banco {
     Gson gson;
 
     // converte objetos Java para JSON
-    String json = gson.toJson(tabela);
+    String json;
 
     /**
      * @param estoque - Recebe o estoque
@@ -31,6 +31,7 @@ public class Banco {
         tabela = new Estoque();
         tabela = estoque;
         gson = new Gson();
+        json = gson.toJson(tabela);
     }
 
     /**
@@ -40,7 +41,7 @@ public class Banco {
     public void escreveArquivo() throws IOException {
         try {
             //Apenas no windows, tem q mudar qnd for pro Linux
-            FileWriter writer = new FileWriter("D:\\estoque.json");
+            FileWriter writer = new FileWriter("/ice/NetBeansProjects/Orientacao-a-Objetos/estoque.json");
             writer.write(json);
             writer.close();
         } catch (IOException e) {
@@ -53,14 +54,15 @@ public class Banco {
      * @throws IOException - precaução para casos de erros de leitura de
      * arquivos
      */
-    public void pegaArquivo() throws IOException {
+    public Estoque pegaArquivo() throws IOException {
         try {
             //Apenas no windows, tem q mudar qnd for pro Linux
-            BufferedReader br = new BufferedReader(new FileReader("c:\\file.json"));
+            BufferedReader br = new BufferedReader(new FileReader("/ice/NetBeansProjects/Orientacao-a-Objetos/estoque.json"));
 
-            Estoque tabela = gson.fromJson(br, Estoque.class);
+            tabela = gson.fromJson(br, Estoque.class);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return tabela;
     }
 }

@@ -26,6 +26,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     Produto produto;
     Estoque aux;
     private Object jDesktopPane;
+    Banco banco;
 
     /**
      * Creates new form Login
@@ -35,6 +36,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         estoque = new Estoque();
         produto = new Produto();
         aux = new Estoque();
+        banco = new Banco(estoque);
+
+        try {
+            estoque = banco.pegaArquivo();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        imprimeTabela(estoque, jTable3);
     }
 
     /**
@@ -862,7 +871,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         aux.limpaEstoque();
         limpaTabela(estoque, jTable5);
     }//GEN-LAST:event_botaoAdicionarEdicaoActionPerformed
-
     public void limpaTabela(Estoque estoque, JTable tabela) {
         int i = estoque.listaProdutos().size() - 1;
         DefaultTableModel model = (DefaultTableModel) tabela.getModel();
