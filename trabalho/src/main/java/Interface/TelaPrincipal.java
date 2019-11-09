@@ -711,6 +711,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         if (limpar == JOptionPane.OK_OPTION) {
             estoque.recuperaLixo();
             imprimeTabela(estoque, jTable3);
+            atualizaJson(estoque);
         }
     }//GEN-LAST:event_botaoRecuperaLixeiraActionPerformed
 
@@ -738,12 +739,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 Object[] row = {estoque.getProduto(estoque.listaProdutos().size() - 1).getId(), nome, fornecedor, quantidade, preco};
                 DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
                 model.addRow(row);
-                Banco banco = new Banco(estoque);
-                try {
-                    banco.escreveArquivo();
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
+                atualizaJson(estoque);
             }
         }
         fornecedorTxt.setText("");
@@ -762,6 +758,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         if (limpar == JOptionPane.OK_OPTION) {
             limpaTabela(estoque, jTable3);
             estoque.limpaEstoque();
+            atualizaJson(estoque);
         }
     }//GEN-LAST:event_botaoLimpaEstoqueActionPerformed
 
@@ -770,6 +767,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         limpar = JOptionPane.showConfirmDialog(null, "Deseja limpar todo o lixo?", "Limpar", JOptionPane.OK_CANCEL_OPTION);
         if (limpar == JOptionPane.OK_OPTION) {
             estoque.limpaLixo();
+            atualizaJson(estoque);
         }
     }//GEN-LAST:event_botaoLimpaLixeiraActionPerformed
 
@@ -786,7 +784,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_vendaTxtActionPerformed
 
     private void registraVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registraVendaActionPerformed
-        // TODO add your handling code here:
+        
         int confirm = JOptionPane.showConfirmDialog(null, "Deseja finalizar a venda?", "Venda", JOptionPane.OK_CANCEL_OPTION);
         if (confirm == JOptionPane.OK_OPTION) {
             String prod = vendaTxt.getText();
@@ -804,6 +802,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 }
             }
             vendaTxt.setText("");
+            atualizaJson(estoque);
         }
     }//GEN-LAST:event_registraVendaActionPerformed
 
@@ -870,6 +869,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         atualizaTabela(jTable3, estoque);
         aux.limpaEstoque();
         limpaTabela(estoque, jTable5);
+        atualizaJson(estoque);
     }//GEN-LAST:event_botaoAdicionarEdicaoActionPerformed
     public void limpaTabela(Estoque estoque, JTable tabela) {
         int i = estoque.listaProdutos().size() - 1;
@@ -898,6 +898,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public void atualizaTabela(JTable tabela, Estoque estoque) {
         limpaTabela(estoque, tabela);
         imprimeTabela(estoque, tabela);
+    }
+
+    private void atualizaJson(Estoque estoque) {
+        Banco banco = new Banco(estoque);
+        try {
+            banco.escreveArquivo();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     public static void main(String args[]) {
