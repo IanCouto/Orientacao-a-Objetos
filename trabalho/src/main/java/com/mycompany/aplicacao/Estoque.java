@@ -7,22 +7,30 @@ Matheus Henrique Rubio		Matrícula: 201876036
 */
 package com.mycompany.aplicacao;
 import java.util.ArrayList;
+/**
+ * 
+ */
 public class Estoque {
     private ArrayList<Produto> produtos;
     private ArrayList<Produto> lixo;
-
+/**
+ */
     public Estoque() {
         this.produtos = new ArrayList();
         this.lixo = new ArrayList();
     }
-
+/**
+ */
     public void adicionaProduto(Produto produto){
         produtos.add(produto);
     }
-    
+/**
+ */    
     public Produto getProduto (int indice){
         return produtos.get(indice);
     }
+/**
+ */
     public void removeProdutoNome(String nome){
         for(int i = 0; i < produtos.size(); i++ ){
             if(produtos.get(i).getNome().equals(nome)){
@@ -31,6 +39,8 @@ public class Estoque {
             }
         }
     }
+/**
+ */    
     public void removeProdutoQuantidade(Integer quantidade){
         for(int i = 0; i < produtos.size(); i++ ){
             if(produtos.get(i).getQuantidade() == quantidade){
@@ -39,11 +49,13 @@ public class Estoque {
             }
         }
     }
-    
+/**
+ */    
     public void limpaLixo(){
         lixo.clear();
     }
-    
+/**
+ */    
     public void limpaEstoque(){
         for (int i = 0; i < produtos.size(); i++) {
             lixo.add(getProduto(i));
@@ -57,7 +69,8 @@ public class Estoque {
             produtos.add(lixo.get(i));
         }
     }
-    
+/**
+ */    
     public ArrayList<Produto> listaProdutos(){
         return produtos;
     }
