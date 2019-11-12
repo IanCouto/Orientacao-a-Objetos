@@ -283,7 +283,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoRecuperaLixeira, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -502,7 +502,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -599,7 +599,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                             .addComponent(qtdVenda, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(vendaTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addContainerGap(174, Short.MAX_VALUE))
+                        .addContainerGap(162, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
@@ -679,7 +679,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
 
@@ -809,8 +809,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void botaoBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoBuscarActionPerformed
         int k = 0;
-        //aux.limpaEstoque();
-        //limpaTabela(aux, jTable5);
+        aux.limpaEstoque();
+        limpaTabela(aux, jTable5);
         DefaultTableModel model = (DefaultTableModel) jTable5.getModel();
         for (int i = 0; i < estoque.listaProdutos().size(); i++) {
             if (!buscarFornecedor.getText().isEmpty() && estoque.getProduto(i).getFornecedor().contains(buscarFornecedor.getText())) {
@@ -835,15 +835,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 model.addRow(row);
             }
         }
-        atualizaTabela(jTable5, aux);
         buscaId.setText("");
         buscaNome.setText("");
         buscarFornecedor.setText("");
         buscarPreco.setText("");
         buscarQuantidade.setText("");
-        System.out.println(aux.listaProdutos().size());
-        System.out.println(aux.getProduto(0).getId());
-        System.out.println(estoque.getProduto(0).getId());
     }//GEN-LAST:event_botaoBuscarActionPerformed
 
     private void botaoAdicionarEdicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdicionarEdicaoActionPerformed
