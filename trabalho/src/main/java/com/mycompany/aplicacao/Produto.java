@@ -6,9 +6,9 @@
  Matheus Henrique Rubio		 Matrícula: 201876036
  */
 package com.mycompany.aplicacao;
-//Exemplo de JavaDoc para classe
+
 /**
- * Classe Produto - Usada para instanciar um objeto do tipo Produto. Possui como métodos dois construtores e getters e seetters.
+ * Usada para criar um produto.
  */
 public class Produto{
 
@@ -17,7 +17,6 @@ public class Produto{
     private Integer quantidade;
     private Float preco;
     private String fornecedor;
-    //Exemplo de JavaDoc para Método
     /**
      * Construtor da classe Produto. inicia o objeto com todas as informações preenchidas.
      * @param nome Armazena o nome do produto.
@@ -78,7 +77,7 @@ public class Produto{
     }
     
     /**
-     * @param qtd nova quantidade do produto. (Sempre >= 0)
+     * @param qtd nova quantidade do produto (maior ou igual a 0). 
      */
     public void setQuantidade(int qtd) {
         if(qtd >= 0) {
@@ -93,7 +92,7 @@ public class Produto{
     }
 
     /**
-     * @param val novo valor do produto. (Sempre > que 0)
+     * @param val novo valor do produto (maior que 0).
      */
     public void setValor(float val) {
         if(val > 0) {
