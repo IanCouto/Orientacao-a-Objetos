@@ -683,7 +683,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel14.setText("Nome:");
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel15.setText("CPF(sem ponto e hífen):");
+        jLabel15.setText("CPF:");
 
         cpfCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -771,6 +771,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jButton5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton5.setText("Esvaziar Lixeira");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton6.setText("Limpar Clientes");
@@ -881,7 +886,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         int confirm = JOptionPane.showConfirmDialog(null, "Deseja registrar este cliente?", "Registro", JOptionPane.OK_CANCEL_OPTION);
         if (confirm == JOptionPane.OK_OPTION){
         String nome = nomeCliente.getText();
-        Integer cpf = Integer.parseInt(cpfCliente.getText());
+        String cpf = cpfCliente.getText();
         int j = 0;
         for (int i = 0; i < (clientes.listaClientes().size()); i++) {
             if (nome.equals(clientes.getCliente(i).getNome())) {
@@ -1080,14 +1085,47 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoRecuperaLixeiraActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+        int limpar;
+        limpar = JOptionPane.showConfirmDialog(null, "Deseja apagar todos os clientes?", "Clientes", JOptionPane.OK_CANCEL_OPTION);
+        //Ok = 0, Cancel = 2
+        if (limpar == JOptionPane.OK_OPTION) {
+            clientes.limpaLixo();
+            limpaTabelaClientes(clientes, jTable2);
+            clientes.limpaClientes();
+            atualizaJsonClientes(clientes);
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        int recupera;
+        recupera = JOptionPane.showConfirmDialog(null, "Deseja recuperar todo o conteúdo da lixeira e substituir pelos clientes?", "Recuperar", JOptionPane.OK_CANCEL_OPTION);
+        if (recupera == JOptionPane.OK_OPTION) {
+            limpaTabelaClientes(clientes, jTable2);
+            clientes.recuperaLixo();
+            imprimeTabelaClientes(clientes, jTable2);
+            atualizaJsonClientes(clientes);
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        int esvazia;
+        esvazia = JOptionPane.showConfirmDialog(null, "Deseja limpar todo o lixo?", "Limpar", JOptionPane.OK_CANCEL_OPTION);
+        if (esvazia == JOptionPane.OK_OPTION) {
+            clientes.limpaLixo();
+            atualizaJsonClientes(clientes);
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
     public void limpaTabela(Estoque estoque, JTable tabela) {
         int i = estoque.listaProdutos().size() - 1;
+        DefaultTableModel model = (DefaultTableModel) tabela.getModel();
+        while (i != -1) {
+            model.removeRow(i);
+            i--;
+        }
+    }
+    
+    public void limpaTabelaClientes(Clientes clientes, JTable tabela) {
+        int i = clientes.listaClientes().size() - 1;
         DefaultTableModel model = (DefaultTableModel) tabela.getModel();
         while (i != -1) {
             model.removeRow(i);
@@ -1116,7 +1154,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         int j = 0;
         while (j <= i - 1) {
             String nome = clientes.getCliente(j).getNome();
-            Integer cpf = clientes.getCliente(j).getCPF();
+            String cpf = clientes.getCliente(j).getCPF();
             Object[] row = {clientes.getCliente(j).getId(), nome, cpf};
             model.addRow(row);
             j++;
