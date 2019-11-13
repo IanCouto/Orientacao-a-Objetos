@@ -15,11 +15,11 @@ public class Cliente {
     
 
     private String nome;
-    private Integer id = 0;
-    private Integer cpf;
+    private int id = 0;
+    private String cpf;
 
 
-    public Cliente(String nome, int cpf, Integer id) {
+    public Cliente(String nome, String cpf, int id) {
         this.nome = nome;
         this.id = id;
         this.cpf = cpf;
@@ -49,11 +49,11 @@ public class Cliente {
         this.nome = newNome;
     }
 
-    public Integer getCPF() {
+    public String getCPF() {
         return cpf;
     }
 
-    public void setCPF(int cpf) {
+    public void setCPF(String cpf) {
         this.cpf = cpf;
     }
 
