@@ -7,16 +7,12 @@ Matheus Henrique Rubio		Matrícula: 201876036
  */
 package Interface;
 
-import java.awt.Frame;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import com.mycompany.aplicacao.Banco;
 import javax.swing.table.DefaultTableModel;
 import com.mycompany.aplicacao.Produto;
 import com.mycompany.aplicacao.Estoque;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JTable;
 
 public class TelaPrincipal extends javax.swing.JFrame {
@@ -708,7 +704,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         int limpar;
         limpar = JOptionPane.showConfirmDialog(null, "Deseja recuperar todo o conteúdo da lixeira e substituir pelo estoque?", "Limpar", JOptionPane.OK_CANCEL_OPTION);
         if (limpar == JOptionPane.OK_OPTION) {
-            limpaTabela(estoque, jTable3);
+            limpaTabela(jTable3);
             estoque.recuperaLixo();
             imprimeTabela(estoque, jTable3);
             atualizaJson(estoque);
@@ -757,7 +753,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         //Ok = 0, Cancel = 2
         if (limpar == JOptionPane.OK_OPTION) {
             estoque.limpaLixo();
-            limpaTabela(estoque, jTable3);
+            limpaTabela(jTable3);
             estoque.limpaEstoque();
             atualizaJson(estoque);
         }
@@ -810,7 +806,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void botaoBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoBuscarActionPerformed
         int k = 0;
         aux.limpaEstoque();
-        limpaTabela(aux, jTable5);
+        limpaTabela(jTable5);
         DefaultTableModel model = (DefaultTableModel) jTable5.getModel();
         for (int i = 0; i < estoque.listaProdutos().size(); i++) {
             if (!buscarFornecedor.getText().isEmpty() && estoque.getProduto(i).getFornecedor().contains(buscarFornecedor.getText())) {
@@ -849,8 +845,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Integer quantidadeaux;
         Float valoraux;
 
-        for (int i = 0; i < aux.listaProdutos().size(); i++) {
-            for (int k = 0; k < estoque.listaProdutos().size(); k++) {
+        for (int i = 0; i < aux.listaProdutos().size()-1; i++) {
+            for (int k = 0; k < estoque.listaProdutos().size()-1; k++) {
                 if (estoque.getProduto(i).getId() == aux.getProduto(k).getId()) {
                     nomeaux = model.getValueAt(i, 1).toString();
                     fornecedoraux = model.getValueAt(i, 2).toString();
@@ -865,16 +861,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
         atualizaTabela(jTable3, estoque);
         aux.limpaEstoque();
-        limpaTabela(estoque, jTable5);
+        limpaTabela(jTable5);
         atualizaJson(estoque);
     }//GEN-LAST:event_botaoAdicionarEdicaoActionPerformed
-    public void limpaTabela(Estoque estoque, JTable tabela) {
-        int i = estoque.listaProdutos().size() - 1;
+    @SuppressWarnings("empty-statement")
+    public void limpaTabela(JTable tabela) {
         DefaultTableModel model = (DefaultTableModel) tabela.getModel();
-        while (i != -1) {
-            model.removeRow(i);
-            i--;
-        }
+        for (;model.getRowCount() > 0; model.removeRow(model.getRowCount()-1));
     }
 
     public void imprimeTabela(Estoque estoque, JTable tabela) {
@@ -893,7 +886,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     public void atualizaTabela(JTable tabela, Estoque estoque) {
-        limpaTabela(estoque, tabela);
+        limpaTabela(tabela);
         imprimeTabela(estoque, tabela);
     }
 
