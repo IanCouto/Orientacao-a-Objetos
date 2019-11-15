@@ -15,8 +15,7 @@ import com.mycompany.aplicacao.Produto;
 import com.mycompany.aplicacao.Estoque;
 import com.mycompany.aplicacao.Fornecedor;
 import java.io.IOException;
-import javax.swing.ButtonGroup;
-import javax.swing.JDesktopPane;
+import java.util.ArrayList;
 import javax.swing.JTable;
 
 public class TelaPrincipal extends javax.swing.JFrame {
@@ -25,8 +24,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     Produto produto;
     Estoque aux;
     
-    Cliente cliente;
-    Fornecedor fornecedor;
+    //Cliente cliente;
+    //Fornecedor fornecedor;
+    
+    private ArrayList<Fornecedor> listaFornecedores;
+    private ArrayList<Cliente> listaClientes;
     
     Banco banco;
     
@@ -39,6 +41,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         produto = new Produto();
         aux = new Estoque();
                 
+        this.listaFornecedores = new ArrayList();
+        this.listaClientes = new ArrayList();
+        
         banco = new Banco(estoque);
 
         try {
@@ -122,7 +127,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         telefoneTxt = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        nomeClienteTxt = new javax.swing.JTextField();
+        nomePessoaTxt = new javax.swing.JTextField();
         adicionaPessoa = new javax.swing.JButton();
         radioCliente = new javax.swing.JRadioButton();
         radioFornecedor = new javax.swing.JRadioButton();
@@ -704,9 +709,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel15.setText("Nome:");
 
-        nomeClienteTxt.addActionListener(new java.awt.event.ActionListener() {
+        nomePessoaTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomeClienteTxtActionPerformed(evt);
+                nomePessoaTxtActionPerformed(evt);
             }
         });
 
@@ -729,7 +734,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(telefoneTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(nomeClienteTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(nomePessoaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addContainerGap(44, Short.MAX_VALUE)))
         );
         jPanel8Layout.setVerticalGroup(
@@ -742,7 +747,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addGroup(jPanel8Layout.createSequentialGroup()
                             .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(nomeClienteTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nomePessoaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(16, 16, 16)
                             .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1102,9 +1107,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_clienteTxtActionPerformed
 
-    private void nomeClienteTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeClienteTxtActionPerformed
+    private void nomePessoaTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomePessoaTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nomeClienteTxtActionPerformed
+    }//GEN-LAST:event_nomePessoaTxtActionPerformed
 
     private void cpfTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpfTxtActionPerformed
         // TODO add your handling code here:
@@ -1122,7 +1127,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void adicionaPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionaPessoaActionPerformed
         
         
-        int confirm = JOptionPane.showConfirmDialog(null, "Cadastrar cliente?", "cliente", JOptionPane.OK_CANCEL_OPTION);
+        
+        if(radioCliente.isSelected()){
+            
+            int confirm = JOptionPane.showConfirmDialog(null, "Cadastrar cliente?", "Cliente", JOptionPane.OK_CANCEL_OPTION);
+        }
+        else if(radioFornecedor.isSelected()){
+            for(int i=0; i<listaFornecedores.size()-1; i++){
+                
+                if(nomePessoaTxt.getText().equals(listaFornecedores(i)))
+            }
+            int confirm = JOptionPane.showConfirmDialog(null, "Cadastrar fornecedor?", "Fornecedor", JOptionPane.OK_CANCEL_OPTION);
+        }
+        else 
+            JOptionPane.showMessageDialog(null, "Marque a opção cliente ou fornecedor");
+        
     }//GEN-LAST:event_adicionaPessoaActionPerformed
     @SuppressWarnings("empty-statement")
     public void limpaTabela(JTable tabela) {
@@ -1260,7 +1279,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
     private javax.swing.JTextField logradouroTxt;
-    private javax.swing.JTextField nomeClienteTxt;
+    private javax.swing.JTextField nomePessoaTxt;
     private javax.swing.JTextField numeroTxt;
     private javax.swing.JTextField precoTxt;
     private javax.swing.JTextField produtoTxt;

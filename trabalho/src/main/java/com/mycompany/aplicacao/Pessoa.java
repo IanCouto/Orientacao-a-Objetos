@@ -46,4 +46,6 @@ public abstract class Pessoa {
      */
     public abstract void alteraDados(String nom, Integer cp, String log, String bai, String cid, Integer num, String com, Integer tel);
     
+    
+    
 }

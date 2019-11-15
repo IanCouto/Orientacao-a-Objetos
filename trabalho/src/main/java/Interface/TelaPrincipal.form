@@ -3075,7 +3075,7 @@
                                               <Component id="jLabel23" min="-2" pref="97" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Component id="nomeClienteTxt" min="-2" pref="405" max="-2" attributes="0"/>
+                                      <Component id="nomePessoaTxt" min="-2" pref="405" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace pref="44" max="32767" attributes="0"/>
@@ -3093,7 +3093,7 @@
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="jLabel15" min="-2" pref="31" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="nomeClienteTxt" min="-2" pref="39" max="-2" attributes="0"/>
+                                      <Component id="nomePessoaTxt" min="-2" pref="39" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel22" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
@@ -3145,9 +3145,9 @@
                     <Property name="text" type="java.lang.String" value="Nome:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="nomeClienteTxt">
+                <Component class="javax.swing.JTextField" name="nomePessoaTxt">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nomeClienteTxtActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nomePessoaTxtActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
