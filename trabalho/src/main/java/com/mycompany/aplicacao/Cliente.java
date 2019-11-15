@@ -5,116 +5,60 @@
  */
 package com.mycompany.aplicacao;
 
-import java.util.ArrayList;
 
 /**
  *
  * @author Augusto
  */
-public class Cliente {
-    private String nome;
-    private Integer cpf;
-    private String logradouro;
-    private String bairro;
-    private String cidade;
-    private Integer numero;
-    private String complemento;
-    private Integer telefone;
-    private Integer compras; //indica o número de compras já realizadas por aquele cliente
+public class Cliente extends Pessoa{
     
-    public Cliente(){
-        nome = new String();
-        logradouro = new String();
-        bairro = new String();
-        cidade = new String();
-        complemento = new String();
-    }
+    Integer id;
     
-    //Geters
-    public String getNome(){
-        return nome;
-    }
-    public Integer getCpf(){
-        return cpf;
-    }
-    public String getLogradouro(){
-        return logradouro;
-    }
-    public String getBairro(){
-        return bairro;
-    }
-    public Integer getNumero(){
-        return numero;
-    }
-    public String getComplemento(){
-        return complemento;
-    }
-    public Integer getTelefone(){
-        return telefone;
-    }
-    public Integer getCompras(){
-        return compras;
-    }
-    
-    //Seters
     /**
      * 
-     * @param n - nome do cliente
+     * @param nom - nome do cliente
+     * @param i - numero de identificação do cliente
+     * @param cp - cpf do cliente
+     * @param log - logradouro (Rua, Avenida, Sítio...) da casa/prédio do cliente
+     * @param bai - bairro da casa/prédio do cliente
+     * @param cid - cidade da casa/prédio do cliente
+     * @param num - número da casa/prédio do cliente
+     * @param com - complemento (apartamento, casa, bloco, km...) da casa/prédio do cliente
+     * @param tel - telefone celular da cliente
      */
-    public void setNome(String n){
-        nome = n;
+    @Override
+    public <T> void insereDados(String nom, T i, Integer cp, String log, String bai, String cid, Integer num, String com, Integer tel){
+        nome = nom;
+        id = (Integer) i;
+        cpf = cp;
+        logradouro = log;
+        bairro = bai;
+        cidade = cid;
+        numero = num;
+        complemento = com;
+        telefone = tel;
     }
+
     /**
      * 
-     * @param c - cpf do cliente
+     * @param nom - nome do cliente
+     * @param cp - cpf do cliente
+     * @param log - logradouro (Rua, Avenida, Sítio...) da casa/prédio do cliente
+     * @param bai - bairro da casa/prédio do cliente
+     * @param cid - cidade da casa/prédio do cliente
+     * @param num - número da casa/prédio do cliente
+     * @param com - complemento (apartamento, casa, bloco, km...) da casa/prédio do cliente
+     * @param tel - telefone celular da cliente
      */
-    public void setCpf(Integer c){
-        cpf = c;
-    }
-    /**
-     * 
-     * @param l - Logradouro da casa/prédio do cliente (rua, avenida, estrada...)
-     */
-    public void setLogradouro(String l){
-        logradouro = l;
-    }
-    /**
-     * 
-     * @param b - bairro da casa/prédio do cliente
-     */
-    public void setBairro(String b){
-        bairro = b;
-    }
-    /**
-     * 
-     * @param c - cidade do cliente
-     */
-    public void setCidade(String c){
-        cidade = c;
-    }
-    /**
-     * 
-     * @param n - numero da casa/prédio do cliente
-     */
-    public void setNumero(Integer n){
-        numero = n;
-    }
-    /**
-     * 
-     * @param c - complento da casa do cliente(apartamento, casa, sitio...)
-     */
-    public void setComplemento(String c){
-        complemento = c;
-    }
-    /**
-     * 
-     * @param t - telefone celular do cliente
-     */
-    public void setTelefone(Integer t){
-        telefone = t;
-    }
-    
-    public class RegistroClientes extends Cliente{
-        private ArrayList<Cliente> clientes;
+    @Override
+    public void alteraDados(String nom, Integer cp, String log, String bai, String cid, Integer num, String com, Integer tel) {
+        nome = nom;
+        cpf = cp;
+        logradouro = log;
+        bairro = bai;
+        cidade = cid;
+        numero = num;
+        complemento = com;
+        telefone = tel;
     }
 }
