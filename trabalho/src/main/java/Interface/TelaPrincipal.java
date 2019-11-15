@@ -9,10 +9,14 @@ package Interface;
 
 import javax.swing.JOptionPane;
 import com.mycompany.aplicacao.Banco;
+import com.mycompany.aplicacao.Cliente;
 import javax.swing.table.DefaultTableModel;
 import com.mycompany.aplicacao.Produto;
 import com.mycompany.aplicacao.Estoque;
+import com.mycompany.aplicacao.Fornecedor;
 import java.io.IOException;
+import javax.swing.ButtonGroup;
+import javax.swing.JDesktopPane;
 import javax.swing.JTable;
 
 public class TelaPrincipal extends javax.swing.JFrame {
@@ -20,9 +24,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     Estoque estoque;
     Produto produto;
     Estoque aux;
-    private Object jDesktopPane;
+    
+    Cliente cliente;
+    Fornecedor fornecedor;
+    
     Banco banco;
-
+    
     /**
      * Creates new form Login
      */
@@ -31,6 +38,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         estoque = new Estoque();
         produto = new Produto();
         aux = new Estoque();
+                
         banco = new Banco(estoque);
 
         try {
@@ -50,6 +58,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jInternalFrame3 = new javax.swing.JInternalFrame();
         jPanel4 = new javax.swing.JPanel();
@@ -114,9 +123,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         telefoneTxt = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         nomeClienteTxt = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        adicionaPessoa = new javax.swing.JButton();
+        radioCliente = new javax.swing.JRadioButton();
+        radioFornecedor = new javax.swing.JRadioButton();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
@@ -220,7 +229,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoRecuperaLixeira, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -333,7 +342,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(precoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(adicionarProdutobutton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(334, Short.MAX_VALUE))
+                .addContainerGap(338, Short.MAX_VALUE))
         );
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {adicionarProdutobutton, fornecedorTxt, precoTxt, produtoTxt});
@@ -594,7 +603,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(clienteTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(registraVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(241, Short.MAX_VALUE))
+                .addContainerGap(245, Short.MAX_VALUE))
         );
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {descontoPorcentagemTxt, descontoReaisTxt, registraVenda, vendaTxt});
@@ -744,18 +753,25 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        jButton3.setText("Adicionar");
-
-        jRadioButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton2.setText("Cliente");
-        jRadioButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        jRadioButton3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton3.setText("Fornecedor");
-        jRadioButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+        adicionaPessoa.setText("Adicionar");
+        adicionaPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton3ActionPerformed(evt);
+                adicionaPessoaActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(radioCliente);
+        radioCliente.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        radioCliente.setText("Cliente");
+        radioCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        buttonGroup1.add(radioFornecedor);
+        radioFornecedor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        radioFornecedor.setText("Fornecedor");
+        radioFornecedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        radioFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioFornecedorActionPerformed(evt);
             }
         });
 
@@ -768,29 +784,33 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(radioCliente)
+                                .addGap(18, 18, 18)
+                                .addComponent(radioFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jRadioButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(adicionaPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(radioCliente)
+                            .addComponent(radioFornecedor))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(adicionaPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Registrar pessoa", jPanel5);
@@ -828,7 +848,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 619, Short.MAX_VALUE)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 623, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Registro de vendas", jPanel6);
@@ -867,7 +887,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -901,7 +921,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 679, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 683, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -942,10 +962,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 produto = new Produto(produtoTxt.getText(), Integer.parseInt(quantidadeTxt.getSelectedItem().toString()), Float.parseFloat(precoTxt.getText()), fornecedorTxt.getText(), estoque.listaProdutos().size() + 1);
                 estoque.adicionaProduto(produto);
                 String nome = estoque.getProduto(estoque.listaProdutos().size() - 1).getNome();
-                String fornecedor = estoque.getProduto(estoque.listaProdutos().size() - 1).getFornecedor();
+                String nomeFornecedor = estoque.getProduto(estoque.listaProdutos().size() - 1).getFornecedor();
                 Integer quantidade = estoque.getProduto(estoque.listaProdutos().size() - 1).getQuantidade();
                 Float preco = estoque.getProduto(estoque.listaProdutos().size() - 1).getValor();
-                Object[] row = {estoque.getProduto(estoque.listaProdutos().size() - 1).getId(), nome, fornecedor, quantidade, preco};
+                Object[] row = {estoque.getProduto(estoque.listaProdutos().size() - 1).getId(), nome, nomeFornecedor, quantidade, preco};
                 DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
                 model.addRow(row);
                 atualizaJson(estoque);
@@ -1094,9 +1114,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_telefoneTxtActionPerformed
 
-    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton3ActionPerformed
+    private void radioFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioFornecedorActionPerformed
+      
+        String razaoS = JOptionPane.showInputDialog("Razão social do fornecedor");
+    }//GEN-LAST:event_radioFornecedorActionPerformed
+
+    private void adicionaPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionaPessoaActionPerformed
+        
+        
+        int confirm = JOptionPane.showConfirmDialog(null, "Cadastrar cliente?", "cliente", JOptionPane.OK_CANCEL_OPTION);
+    }//GEN-LAST:event_adicionaPessoaActionPerformed
     @SuppressWarnings("empty-statement")
     public void limpaTabela(JTable tabela) {
         DefaultTableModel model = (DefaultTableModel) tabela.getModel();
@@ -1109,10 +1136,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         int j = 0;
         while (j <= i - 1) {
             String nome = estoque.getProduto(j).getNome();
-            String fornecedor = estoque.getProduto(j).getFornecedor();
+            String nomeFornecedor = estoque.getProduto(j).getFornecedor();
             Integer quantidade = estoque.getProduto(j).getQuantidade();
             Float preco = estoque.getProduto(j).getValor();
-            Object[] row = {estoque.getProduto(j).getId(), nome, fornecedor, quantidade, preco};
+            Object[] row = {estoque.getProduto(j).getId(), nome, nomeFornecedor, quantidade, preco};
             model.addRow(row);
             j++;
         }
@@ -1168,6 +1195,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton adicionaPessoa;
     private javax.swing.JButton adicionarProdutobutton;
     private javax.swing.JTextField bairroTxt;
     private javax.swing.JButton botaoAdicionarEdicao;
@@ -1180,6 +1208,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField buscarFornecedor;
     private javax.swing.JTextField buscarPreco;
     private javax.swing.JTextField buscarQuantidade;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField cidadeTxt;
     private javax.swing.JTextField clienteTxt;
     private javax.swing.JTextField complementoTxt;
@@ -1187,7 +1216,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField descontoPorcentagemTxt;
     private javax.swing.JTextField descontoReaisTxt;
     private javax.swing.JTextField fornecedorTxt;
-    private javax.swing.JButton jButton3;
     private javax.swing.JInternalFrame jInternalFrame3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1222,8 +1250,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1240,6 +1266,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField produtoTxt;
     private javax.swing.JComboBox qtdVenda;
     private javax.swing.JComboBox<String> quantidadeTxt;
+    private javax.swing.JRadioButton radioCliente;
+    private javax.swing.JRadioButton radioFornecedor;
     private javax.swing.JButton registraVenda;
     private javax.swing.JMenu sobre;
     private javax.swing.JTextField telefoneTxt;

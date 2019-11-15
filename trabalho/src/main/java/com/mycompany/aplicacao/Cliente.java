@@ -12,7 +12,7 @@ package com.mycompany.aplicacao;
  */
 public class Cliente extends Pessoa{
     
-    Integer id;
+    Integer id = 0;
     
     /**
      * 
