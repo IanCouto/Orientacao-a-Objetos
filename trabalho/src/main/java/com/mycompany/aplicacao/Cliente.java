@@ -5,29 +5,30 @@
  */
 package com.mycompany.aplicacao;
 
-
 /**
  *
  * @author Augusto
  */
-public class Cliente extends Pessoa{
-    
+public class Cliente extends Pessoa {
+
     Integer id = 0;
-    
+
     /**
-     * 
+     *
      * @param nom - nome do cliente
      * @param i - numero de identificação do cliente
      * @param cp - cpf do cliente
-     * @param log - logradouro (Rua, Avenida, Sítio...) da casa/prédio do cliente
+     * @param log - logradouro (Rua, Avenida, Sítio...) da casa/prédio do
+     * cliente
      * @param bai - bairro da casa/prédio do cliente
      * @param cid - cidade da casa/prédio do cliente
      * @param num - número da casa/prédio do cliente
-     * @param com - complemento (apartamento, casa, bloco, km...) da casa/prédio do cliente
+     * @param com - complemento (apartamento, casa, bloco, km...) da casa/prédio
+     * do cliente
      * @param tel - telefone celular da cliente
      */
     @Override
-    public <T> void insereDados(String nom, T i, Integer cp, String log, String bai, String cid, Integer num, String com, Integer tel){
+    public <T> void insereDados(String nom, T i, Integer cp, String log, String bai, String cid, Integer num, String com, Integer tel) {
         nome = nom;
         id = (Integer) i;
         cpf = cp;
@@ -40,14 +41,16 @@ public class Cliente extends Pessoa{
     }
 
     /**
-     * 
+     *
      * @param nom - nome do cliente
      * @param cp - cpf do cliente
-     * @param log - logradouro (Rua, Avenida, Sítio...) da casa/prédio do cliente
+     * @param log - logradouro (Rua, Avenida, Sítio...) da casa/prédio do
+     * cliente
      * @param bai - bairro da casa/prédio do cliente
      * @param cid - cidade da casa/prédio do cliente
      * @param num - número da casa/prédio do cliente
-     * @param com - complemento (apartamento, casa, bloco, km...) da casa/prédio do cliente
+     * @param com - complemento (apartamento, casa, bloco, km...) da casa/prédio
+     * do cliente
      * @param tel - telefone celular da cliente
      */
     @Override
@@ -60,5 +63,50 @@ public class Cliente extends Pessoa{
         numero = num;
         complemento = com;
         telefone = tel;
+    }
+
+    @Override
+    public String getNome() {
+        return nome;
+    }
+
+    @Override
+    public Integer getCpf() {
+        return cpf;
+    }
+
+    @Override
+    public String getLogradouro() {
+        return logradouro;
+    }
+
+    @Override
+    public String getBairro() {
+        return bairro;
+    }
+
+    @Override
+    public String getCidade() {
+        return cidade;
+    }
+
+    @Override
+    public Integer getNumero() {
+        return numero;
+    }
+
+    @Override
+    public String getComplemento() {
+        return complemento;
+    }
+
+    @Override
+    public Integer getTelefone() {
+        return telefone;
+    }
+
+    @Override
+    public Integer getCompras() {
+        return compras;
     }
 }

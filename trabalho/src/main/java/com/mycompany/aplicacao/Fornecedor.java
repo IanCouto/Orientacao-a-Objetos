@@ -60,5 +60,50 @@ public class Fornecedor extends Pessoa{
         complemento = com;
         telefone = tel;
     }
+
+    @Override
+    public String getNome() {
+        return nome;
+    }
+
+    @Override
+    public Integer getCpf() {
+        return cpf;
+    }
+
+    @Override
+    public String getLogradouro() {
+        return logradouro;
+    }
+
+    @Override
+    public String getBairro() {
+        return bairro;
+    }
+
+    @Override
+    public String getCidade() {
+        return cidade;
+    }
+
+    @Override
+    public Integer getNumero() {
+        return numero;
+    }
+
+    @Override
+    public String getComplemento() {
+        return complemento;
+    }
+
+    @Override
+    public Integer getTelefone() {
+        return telefone;
+    }
+
+    @Override
+    public Integer getCompras() {
+        return compras;
+    }
     
 }

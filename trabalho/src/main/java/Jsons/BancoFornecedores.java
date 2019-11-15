@@ -1,37 +1,40 @@
 /*
-Álvaro Domingues de Freitas     Matrícula: 201876007
-Arthur Rodrigues Fernandes      Matrícula: 201835005
-Augusto Castilho Medeiros       Matrícula: 201876044
-Ian Couto de Paula		Matrícula: 201876002
-Matheus Henrique Rubio		Matrícula: 201876036
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-package com.mycompany.aplicacao;
+package Jsons;
 
 import com.google.gson.Gson;
+import com.mycompany.aplicacao.Cliente;
+import com.mycompany.aplicacao.Fornecedor;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
+ *
  * @author Augusto
  */
-public class Banco {
-
-    Estoque tabela;
+public class BancoFornecedores {
+    private ArrayList<Fornecedor> listaFornecedores;
     private Gson gson;
 
     // converte objetos Java para JSON
     private String json;
 
     /**
-     * @param estoque - Recebe o estoque
+     *
+     * @param c - Lista de clientes
      */
-    public Banco(Estoque estoque) {
-        tabela = new Estoque();
-        tabela = estoque;
+    public BancoFornecedores(ArrayList<Fornecedor> f) {
+        listaFornecedores = new ArrayList<>();
+        listaFornecedores = f;
         gson = new Gson();
-        json = gson.toJson(tabela);
+
+        json = gson.toJson(listaFornecedores);
     }
 
     /**
@@ -41,7 +44,7 @@ public class Banco {
     public void escreveArquivo() throws IOException {
         try {
             //Apenas no windows, tem q mudar qnd for pro Linux
-            FileWriter writer = new FileWriter("estoque.json");
+            FileWriter writer = new FileWriter("clientes.json");
             writer.write(json);
             writer.close();
         } catch (IOException e) {
@@ -55,15 +58,15 @@ public class Banco {
      * @throws IOException - precaução para casos de erros de leitura de
      * arquivos
      */
-    public Estoque pegaArquivo() throws IOException {
+    public ArrayList pegaArquivo() throws IOException {
         try {
             //Apenas no windows, tem q mudar qnd for pro Linux
             BufferedReader br = new BufferedReader(new FileReader("estoque.json"));
 
-            tabela = gson.fromJson(br, Estoque.class);
+            listaFornecedores = gson.fromJson(br, ArrayList.class);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return tabela;
+        return listaFornecedores;
     }
 }

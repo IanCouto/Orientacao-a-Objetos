@@ -10,15 +10,15 @@ package com.mycompany.aplicacao;
  * @author Augusto
  */
 public abstract class Pessoa {
-    String nome;
-    Integer cpf;
-    String logradouro;
-    String bairro;
-    String cidade;
-    Integer numero;
-    String complemento;
-    Integer telefone;
-    Integer compras; //indica o número de compras já realizadas por aquele cliente
+    protected String nome;
+    protected Integer cpf;
+    protected String logradouro;
+    protected String bairro;
+    protected String cidade;
+    protected Integer numero;
+    protected String complemento;
+    protected Integer telefone;
+    protected Integer compras; //indica o número de compras já realizadas por aquele cliente ou pelo usuário com aquele fornecedor
     /**
      * 
      * @param <T> - tipo genérico para inserção de informações diferentes
@@ -46,6 +46,14 @@ public abstract class Pessoa {
      */
     public abstract void alteraDados(String nom, Integer cp, String log, String bai, String cid, Integer num, String com, Integer tel);
     
-    
+    public abstract String getNome();
+    public abstract Integer getCpf();
+    public abstract String getLogradouro();
+    public abstract String getBairro();
+    public abstract String getCidade();
+    public abstract Integer getNumero();
+    public abstract String getComplemento();
+    public abstract Integer getTelefone();
+    public abstract Integer getCompras();
     
 }
