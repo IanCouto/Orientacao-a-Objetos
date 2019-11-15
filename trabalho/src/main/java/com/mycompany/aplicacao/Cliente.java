@@ -5,6 +5,8 @@
  */
 package com.mycompany.aplicacao;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Augusto
@@ -110,5 +112,9 @@ public class Cliente {
      */
     public void setTelefone(Integer t){
         telefone = t;
+    }
+    
+    public class RegistroClientes extends Cliente{
+        private ArrayList<Cliente> clientes;
     }
 }
