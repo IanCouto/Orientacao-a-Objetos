@@ -1097,11 +1097,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 model.addRow(row);
             }
         }
+        atualizaTabela(jTable5, aux);
         buscaId.setText("");
         buscaNome.setText("");
         buscarFornecedor.setText("");
         buscarPreco.setText("");
         buscarQuantidade.setText("");
+        System.out.println(aux.listaProdutos().size());
+        System.out.println(aux.getProduto(0).getId());
+        System.out.println(estoque.getProduto(0).getId());
     }//GEN-LAST:event_botaoBuscarActionPerformed
 
     private void botaoAdicionarEdicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAdicionarEdicaoActionPerformed
