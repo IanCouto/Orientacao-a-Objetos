@@ -53,19 +53,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         
-        bancoC = new BancoClientes(listaClientes);
+        /*bancoC = new BancoClientes(listaClientes);
         try{
-            listaClientes = bancoC.pegaArquivo();
+        listaClientes = bancoC.pegaArquivo();
         } catch (IOException ex) {
-            ex.printStackTrace();
+        ex.printStackTrace();
         }
         
         bancoF = new BancoFornecedores(listaFornecedores);
         try{
-            listaFornecedores = bancoF.pegaArquivo();
+        listaFornecedores = bancoF.pegaArquivo();
         } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+        ex.printStackTrace();
+        }*/
         
         imprimeTabela(estoque, jTable3);
         //imprimeTabela(listaClientes, jTable2);
